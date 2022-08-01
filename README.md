@@ -1,2 +1,2 @@
 # movies-explorer-frontend  
-diploma project
+diploma project frontend part
