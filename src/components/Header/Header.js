@@ -15,14 +15,14 @@ function Header() {
           <li className='header__navigation-link header__navigation-link_active'>Фильмы</li>
           <li className='header__navigation-link'>Сохраненные фильмы</li>
         </ul>
-        {/* <div className='header__buttons header__buttons_type_main'>
+        <div className='header__buttons header__buttons_type_main'>
           <a href='#' className='header__button-link header__button-signup'>Регистрация</a>
           <a href='#' className='header__button-link header__button-signin'>Войти</a>
-        </div> */}
-        <div className='header__buttons header__buttons_type_account'>
+        </div>
+        {/* <div className='header__buttons header__buttons_type_account'>
           <a href='#' className='header__button-link'>Аккаунт</a>
           <button className='header__button-account'/>
-        </div>
+        </div> */}
         {/* <div className='header__buttons header__buttons_burger'>
           <button className='header__button-burger'>Аккаунт</button>
         </div> */}
