@@ -11,10 +11,10 @@ function Header() {
         <div className='header__logo'>
           <img alt='o' className='header__logo-img' src={logo} />
         </div>
-        <ul className='header__navigation'>
+        {/* <ul className='header__navigation'>
           <li className='header__navigation-link header__navigation-link_active'>Фильмы</li>
           <li className='header__navigation-link'>Сохраненные фильмы</li>
-        </ul>
+        </ul> */}
         <div className='header__buttons header__buttons_type_main'>
           <a href='#' className='header__button-link header__button-signup'>Регистрация</a>
           <a href='#' className='header__button-link header__button-signin'>Войти</a>
