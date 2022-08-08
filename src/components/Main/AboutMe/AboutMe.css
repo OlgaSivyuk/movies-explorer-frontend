@@ -24,59 +24,59 @@
 }
 
 .about-me__description {
-    width: 600px ;
+    width: 600px;
     margin-right: 49px;
 }
 
 .about-me__description-title {
-font-family: inherit;
-font-style: normal;
-font-weight: 400;
-font-size: 50px;
-line-height: 58px;
-letter-spacing: -0.04em;
-margin: 0;
+    font-family: inherit;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 58px;
+    letter-spacing: -0.04em;
+    margin: 0;
 }
 
 .about-me__description-subtitle {
-font-family: inherit;
-font-style: normal;
-font-weight: 500;
-font-size: 18px;
-line-height: 20px;
-mix-blend-mode: normal;
-margin: 0;
-padding: 18px 0 0 0;
+    font-family: inherit;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 20px;
+    mix-blend-mode: normal;
+    margin: 0;
+    padding: 18px 0 0 0;
 }
 
 .about-me__description-text {
-font-family: inherit;
-font-style: normal;
-font-weight: 400;
-font-size: 14px;
-line-height: 22px;
-margin: 0;
-padding: 26px 0 0 0;
+    font-family: inherit;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    margin: 0;
+    padding: 26px 0 0 0;
 }
 
 .about-me__social {
-  display: flex;
-  margin: 0;
-  padding: 99px 0 0 0;
+    display: flex;
+    margin: 0;
+    padding: 99px 0 0 0;
 }
 
 .about-me__social-item {
     list-style: none;
     font-family: inherit;
-font-style: normal;
-font-weight: 500;
-font-size: 14px;
-line-height: 17px;
-margin: 0;
-padding: 0 20px 0 0;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    margin: 0;
+    padding: 0 20px 0 0;
 }
 
-.about-me__avater {
+.about-me__avatar {
     max-width: 270px;
     max-height: 327px;
     width: 100%;

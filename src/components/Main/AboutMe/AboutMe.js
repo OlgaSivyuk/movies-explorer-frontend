@@ -31,7 +31,7 @@ function AboutMe() {
           </li>
         </ul>
       </div>
-      <img className='about-me__avater' alt='Фото профиля' src={avatar} />
+      <img className='about-me__avatar' alt='Фото профиля' src={avatar} />
       </div> 
     </section>
   );
