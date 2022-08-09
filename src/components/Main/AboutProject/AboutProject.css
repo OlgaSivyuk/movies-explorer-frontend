@@ -36,7 +36,7 @@
     font-style: normal;
     font-weight: 400;
     font-size: 20px;
-    line-height: 24px;
+    line-height: 24.2px;
     letter-spacing: -0.04em;
     text-align: left;
     margin: 0;
@@ -52,9 +52,7 @@
     padding: 26px 0 0 0;
 }
 
-.about__timeline {
-    /* display: flex; */
-    
+.about__timeline {    
     display: grid;
     grid-template-columns: 20% 80%;
     padding: 110px 0 0 0;
@@ -104,12 +102,98 @@
 
 @media screen and (max-width: 768px) {
     .about {
-      padding: 90px 50px;
+      padding: 90px 50px 80px;
+    }
+
+    .about__description-item {
+        padding: 70px 0 0 0;
+        margin: 0 35px 0 0;
+    }
+
+    .about__description-text {
+        font-size: 12px;
+        line-height: 18px;
+        padding: 22px 0 0 0;
+    }
+
+    .about__timeline {    
+        grid-template-columns: 21% 79%;
+        padding: 93px 0 0 0;
+    }
+
+}
+
+@media screen and (max-width: 700px) {
+
+    .about__description {
+        flex-direction: column;
     }
 }
 
-@media screen and (max-width: 620px) {
+@media screen and (max-width: 600px) {
     .about {
         padding: 70px 18px;
     }
+
+    .about__title {
+       padding: 0 0 28px 0;
+    }
+
+    .about__description-item {
+        padding: 60px 0 0 0;
+        margin: 0;
+    }
+
+    .about__description-item:nth-last-of-type(1) {
+        padding: 56px 0 0 0;
+    }
+
+    .about__description-text {
+        padding: 16px 0 0 0;
+    }
+
+    .about__timeline {    
+        padding: 59px 0 0 0;
+    }
+
+}
+
+@media screen and (max-width: 320px) {
+    /* .about {
+        padding: 70px 14px;
+    } */
+
+    .about__title {
+        font-size: 18px;
+        line-height: 22px;
+    }
+
+   
+    .about__description {  /* отпустить,  когда найду баг */
+        max-width: 284px;
+    }
+
+    .about__description-title {
+        font-size: 18px;
+        line-height: 22px;
+    }
+
+    .about__description-text {
+        font-size: 11px;
+        line-height: 16px;
+    }
+    
+    .about__timeline-text { 
+        font-size: 11px;
+        line-height: 13px;
+        height: 35px;
+    } 
+
+    .about__timeline {    
+        grid-template-columns: 35% 65%;
+    }
+
+    .about__timeline-text_white-style {
+        padding: 0;
+       }
 }

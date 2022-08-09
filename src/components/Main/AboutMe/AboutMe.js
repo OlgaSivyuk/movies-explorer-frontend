@@ -9,7 +9,7 @@ function AboutMe() {
       <div className='about-me__description'>
         <h3 className='about-me__description-title'>Виталий</h3>
         <p className='about-me__description-subtitle'>
-          Фронтенд-разработчик, 30 лет
+          Фронтенд-разработчик, 32 лет
         </p>
         <p className='about-me__description-text'>
           Я родился и живу в Саратове, закончил факультет экономики СГУ. У меня
