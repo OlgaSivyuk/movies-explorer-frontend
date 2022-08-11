@@ -145,6 +145,11 @@ padding: 0;
         padding: 0 0 0 18px;
       }
 
+      .search-movie__input {
+        width: 65%;
+    }
+
+
       .checkbox {
         font-style: normal;
         font-weight: 400;

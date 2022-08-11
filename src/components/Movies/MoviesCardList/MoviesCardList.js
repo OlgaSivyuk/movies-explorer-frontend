@@ -12,13 +12,6 @@ function MoviesCardList() {
           <MoviesCard />
           <MoviesCard />
           <MoviesCard />
-          {/* <MoviesCard />
-          <MoviesCard />
-          <MoviesCard />
-          <MoviesCard />
-          <MoviesCard />
-          <MoviesCard />
-          <MoviesCard /> */}
         </ul>
       </section>
     </>

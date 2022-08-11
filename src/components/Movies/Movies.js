@@ -15,6 +15,11 @@ function Movies() {
         <SearchForm />
         {/* <Preloader /> */}
         <MoviesCardList/>
+        <section className='more-cards'>
+              <button type='button' className='more-cards__button'>
+                Ещё
+              </button>
+        </section>
       </main>
       <Footer />
     </>

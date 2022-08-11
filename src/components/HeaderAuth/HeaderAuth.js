@@ -15,14 +15,14 @@ function HeaderAuth() {
           <li className='header__navigation-link header__navigation-link_active'>Фильмы</li>
           <li className='header__navigation-link'>Сохраненные фильмы</li>
         </ul>
-        <div className='header__buttons header__buttons_type_account'>
+        {/* <div className='header__buttons header__buttons_type_account'>
           <a href='#' className='header__account-link'>Аккаунт
             <span className='header__img-account'></span>
           </a>
-        </div>
-        {/* <div className='header__buttons header__buttons_burger'>
-          <button className='header__button-burger'>Аккаунт</button>
         </div> */}
+        <div className='header__buttons header__buttons_burger'>
+          <button className='header__button-burger'></button>
+        </div>
       </header>
     );
   }
