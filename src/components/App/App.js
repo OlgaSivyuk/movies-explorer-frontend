@@ -5,6 +5,7 @@ import './App.css';
 // import Main from "../Main/Main";
 // import PageNotFound from '../PageNotFound/PageNotFound';
 import Register from '../Register/Register';
+import Login from '../Login/Login';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       {/* <Movies/> */}
       {/* <SavedMovies/> */}
       <Register/>
+      {/* <Login/> */}
     </div>
   );
 }
