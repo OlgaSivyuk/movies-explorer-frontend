@@ -8,6 +8,7 @@ import './App.css';
 // import Register from '../Register/Register';
 // import Login from '../Login/Login';
 import Profile from '../Profile/Profile';
+import Navigation from '../Navigation/Navigation';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       {/* <Register/> */}
       {/* <Login/> */}
       <Profile/>
+      <Navigation/>
     </div>
   );
 }
