@@ -43,6 +43,7 @@
 .header__navigation-link {
     margin: 0 16px 0 0 ;
     padding: 0;
+   
     font-size: 13px;
     font-weight: 400;
     line-height: 18px;
@@ -154,7 +155,7 @@ color: #000000;
 
 @media screen and (max-width: 600px) {
     .header {
-        padding: 18px 14px;
+        padding: 16px 14px;
     }
 
     .header__button-link {
@@ -165,5 +166,20 @@ color: #000000;
     .header__button-signin {
         padding: 5px 12px;
         margin-left: 14px;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    
+    .header__burger{
+        max-width: 40px;
+        width: 100%;
+        max-height: 43px;
+        height: 100%;
+    }
+
+    .header__burger-img {
+        width: 40px;
+        height: 43px;
     }
   }

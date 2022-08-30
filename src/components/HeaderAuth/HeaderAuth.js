@@ -12,13 +12,13 @@ function HeaderAuth() {
         <div className='header__logo'>
           <img alt='o' className='header__logo-img' src={logo} />
         </div>
-        <ul className='header__navigation'>
+        {/* <ul className='header__navigation'>
           <li className='header__navigation-link header__navigation-link_active'>
           <a href='#' className='header__account-link'>Фильмы</a>
           </li>
           <li className='header__navigation-link'>
             <a href='#' className='header__account-link'>Сохраненные фильмы</a></li>
-        </ul>
+        </ul> */}
         {/* <div className='header__buttons header__buttons_type_account'>
           <a href='#' className='header__account-link'>Аккаунт
             <span className='header__img-account'></span>
