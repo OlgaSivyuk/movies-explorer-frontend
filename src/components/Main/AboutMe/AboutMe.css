@@ -132,11 +132,10 @@
     .about-me__social {
         padding: 69px 0 0 0;
     }
-    
+
 }
 
 @media screen and (max-width: 600px) {
-
     .about-me {
         padding: 70px 14px 0;
     }
@@ -171,7 +170,6 @@
 }
 
 @media screen and (max-width: 320px) {
-
     .about-me__title {
         font-size: 18px;
         line-height: 22px;

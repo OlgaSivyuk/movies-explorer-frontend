@@ -48,7 +48,7 @@
     padding: 0 0 0 20px;
 }
 
-.footer__socialt-item:nth-of-type(1){
+.footer__socialt-item:nth-of-type(1) {
     padding: 0;
 }
 
@@ -64,24 +64,24 @@
 }
 
 @media screen and (max-width: 768px) {
-   
+
     .footer {
         padding: 79px 30px 20px;
     }
 
-    
+
 }
 
 
 @media screen and (max-width: 600px) {
-   
+
     .footer {
         padding: 79px 10px 10px;
     }
 
     .footer__text {
         padding: 0 0 21px 0;
-    
+
     }
 
     .footer__info {
@@ -98,8 +98,8 @@
     .footer__socialt-item {
         padding: 12px 0 0 0;
     }
-    
-    .footer__socialt-item:nth-of-type(1){
+
+    .footer__socialt-item:nth-of-type(1) {
         padding: 0;
     }
 

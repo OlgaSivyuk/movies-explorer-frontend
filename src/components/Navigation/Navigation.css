@@ -15,10 +15,10 @@
     top: 0;
 }
 
-.navigation_visible {
+/* .navigation_visible {
     visibility: visible;
     opacity: 1;
-}
+} */
 
 .navigation__container {
     position: relative;
@@ -35,14 +35,14 @@
     top: 0;
 }
 
-.navigation__button{
+.navigation__button {
     display: flex;
     align-items: flex-end;
     justify-content: flex-end;
-    
+
 }
 
-.navigation__button_type_close{
+.navigation__button_type_close {
     position: absolute;
     background-image: url(../../images/close.svg);
     background-color: #FFFFFF;
@@ -57,11 +57,11 @@
     cursor: pointer;
     transition: opacity 0.3s ease-in-out;
     margin: 27px 27px 0 0;
-
     right: 0;
     top: 0;
 
 }
+
 .navigation__button_type_close:hover {
     opacity: 0.5;
 }
@@ -74,41 +74,39 @@
     width: 100%;
     margin: 0;
     padding: 0;
-    
 }
 
 .navigation__link {
     font-family: inherit;
-font-style: normal;
-font-weight: 500;
-font-size: 18px;
-line-height: 22px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
     color: #000000;
     text-decoration: none;
     padding: 6px 0;
     margin: 0 0 28px;
     cursor: pointer;
     border-bottom: 2px solid transparent;
-  transition: .2s all ease-in-out;
+    transition: .2s all ease-in-out;
 }
 
 .navigation__link:hover {
     border-color: #000000;
-  }
+}
 
 .navigation__account-link {
     display: flex;
     align-items: center;
     font-family: inherit;
-font-style: normal;
-font-weight: 500;
-font-size: 14px;
-line-height: 16px;
-color: #000000;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    color: #000000;
     text-decoration: none;
     cursor: pointer;
     transition: opacity 0.3s ease-in-out;
-
 }
 
 .navigation__account-link:hover {
@@ -126,7 +124,7 @@ color: #000000;
     height: 30px;
     width: 26px;
     border: none;
-    outline: none; 
+    outline: none;
     border-radius: 4px;
     display: block;
     background-repeat: no-repeat;
@@ -137,9 +135,8 @@ color: #000000;
 
 
 @media screen and (max-width: 600px) {
-    
 
-    .navigation__button_type_close{
+    .navigation__button_type_close {
         margin: 18px 18px 0 0;
     }
 
@@ -150,12 +147,11 @@ color: #000000;
 
     .navigation__links {
         max-width: 300px;
-        
+
     }
 
     .navigation__container {
         max-width: 320px;
         width: 100%;
-    
     }
-  }
+}

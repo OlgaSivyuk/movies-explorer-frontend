@@ -3,14 +3,12 @@
     justify-content: space-between;
     align-items: center;
     background-color: #F3C1F8;
-    /* background-color: #FFF; */
-
     padding: 18px 70px;
 }
 
-/* .header_pink {
-  background-color: #F3C1F8;
-} */
+.header_pink {
+    background-color: #F3C1F8;
+}
 
 .header__logo {
     width: 38px;
@@ -33,7 +31,6 @@
     padding: 0;
 }
 
-
 /* .header__navigation {
     display: none;
 } */
@@ -43,7 +40,7 @@
 } */
 
 .header__navigation-link {
-    margin: 0 16px 0 0 ;
+    margin: 0 16px 0 0;
     padding: 0;
     font-size: 13px;
     font-weight: 400;
@@ -97,7 +94,7 @@
     height: 30px;
     width: 26px;
     border: none;
-    outline: none; 
+    outline: none;
     border-radius: 4px;
     background-image: url(../../images/account.svg);
     background-repeat: no-repeat;
@@ -109,11 +106,12 @@
     .header {
         padding: 18px 30px;
     }
+
     /* раскомментить,  после настройки стилей */
     /* .header__navigation {
         display: none;
     } */
-        
+
     .header__navigation {
         display: flex;
         list-style: none;
@@ -122,8 +120,7 @@
         margin: 0;
         padding: 0;
     }
-  }
-
+}
 
 @media screen and (max-width: 600px) {
     .header {
@@ -148,5 +145,5 @@
         align-items: center;
         margin: 0;
         padding: 0;
-    } */ 
-  }
+    } */
+}

@@ -168,7 +168,6 @@
         margin: 0 0 80px 0;
         padding: 24px 0 0 0;
     }
-
 }
 
 @media screen and (max-width: 320px) {
@@ -176,10 +175,10 @@
         max-width: 300px;
     }
 
-    .promo__title { 
-        font-size: 29px; /* выяснить,  почему переносится не так как нужно при 30px */
+    .promo__title {
+        font-size: 29px;
+        /* выяснить,  почему переносится не так как нужно при 30px */
         line-height: 38px;
         padding: 44px 0 0 0;
     }
-
 }

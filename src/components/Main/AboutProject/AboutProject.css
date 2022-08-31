@@ -1,5 +1,5 @@
 .about {
-    padding: 110px 70px 100px ;
+    padding: 110px 70px 100px;
     /* box-sizing: border-box;
     max-width: 1280px; */
     /* border: 1px green solid; */
@@ -52,7 +52,7 @@
     padding: 26px 0 0 0;
 }
 
-.about__timeline {    
+.about__timeline {
     display: grid;
     grid-template-columns: 20% 80%;
     padding: 110px 0 0 0;
@@ -60,49 +60,46 @@
 
 .about__timeline-item {
     text-align: center;
-} 
+}
 
 /* .about__timeline-item_left-position {
-
 }
 
 .about__timeline-item_right-position {
-
 } */
 
-.about__timeline-text { 
+.about__timeline-text {
     font-family: inherit;
     font-style: normal;
     font-weight: 500;
     font-size: 14px;
     line-height: 17px;
     text-align: center;
-
     display: flex;
     justify-content: center;
     align-items: center;
     height: 36px;
     margin: 0;
-} 
+}
 
 .about__timeline-text_black-style {
- color: #FFFFFF;
- background-color: #000000;
+    color: #FFFFFF;
+    background-color: #000000;
 
 }
 
 .about__timeline-text_grey-style {
- background-color: #F2F2F2;
+    background-color: #F2F2F2;
 }
 
 .about__timeline-text_white-style {
- color: #A0A0A0;
- padding: 5px 0 0 0;
+    color: #A0A0A0;
+    padding: 5px 0 0 0;
 }
 
 @media screen and (max-width: 768px) {
     .about {
-      padding: 90px 50px 80px;
+        padding: 90px 50px 80px;
     }
 
     .about__description-item {
@@ -116,15 +113,13 @@
         padding: 22px 0 0 0;
     }
 
-    .about__timeline {    
+    .about__timeline {
         grid-template-columns: 21% 79%;
         padding: 93px 0 0 0;
     }
-
 }
 
 @media screen and (max-width: 700px) {
-
     .about__description {
         flex-direction: column;
     }
@@ -136,7 +131,7 @@
     }
 
     .about__title {
-       padding: 0 0 28px 0;
+        padding: 0 0 28px 0;
     }
 
     .about__description-item {
@@ -152,10 +147,9 @@
         padding: 16px 0 0 0;
     }
 
-    .about__timeline {    
+    .about__timeline {
         padding: 59px 0 0 0;
     }
-
 }
 
 @media screen and (max-width: 320px) {
@@ -168,8 +162,8 @@
         line-height: 22px;
     }
 
-   
-    .about__description {  /* отпустить,  когда найду баг */
+    .about__description {
+        /* отпустить,  когда найду баг */
         max-width: 284px;
     }
 
@@ -182,18 +176,18 @@
         font-size: 11px;
         line-height: 16px;
     }
-    
-    .about__timeline-text { 
+
+    .about__timeline-text {
         font-size: 11px;
         line-height: 13px;
         height: 35px;
-    } 
+    }
 
-    .about__timeline {    
+    .about__timeline {
         grid-template-columns: 35% 65%;
     }
 
     .about__timeline-text_white-style {
         padding: 0;
-       }
+    }
 }

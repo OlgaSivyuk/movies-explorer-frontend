@@ -5,9 +5,9 @@ import logo from '../../images/logo.svg';
 // import HeaderLogo from '../../images/logo-header.svg';
 // import BurgerMenu from '../../images/burger-menu-header.svg';
 
-function Header() {
+function Header({isLoggedIn}) {
     return (
-      <header className='header'>
+      <header className={`header ${!isLoggedIn ? 'header_pink' : ''}`}>
         <div className='header__logo'>
           <img alt='o' className='header__logo-img' src={logo} />
         </div>

@@ -9,7 +9,7 @@ export function SavedMovies() {
   return (
     <>
       <HeaderAuth />
-      <main className='movies'>
+      <main className='saved-movies'>
         <SearchForm />
         <MoviesCardList />
       </main>

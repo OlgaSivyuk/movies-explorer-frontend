@@ -14,13 +14,13 @@ function MoviesCard() {
             <h3 className='movie__title'>33 слова о дизайне</h3>
             <span className='movie__duration'>1ч 47м</span>
             </div>
-          {/* <button
+          <button
             className='movie__button movie__button_type_like movie__button_type_like_active'
             aria-label='Нравится'
-          ></button> */}
-          <button className='movie__button movie__button_type_delete'
+          ></button>
+          {/* <button className='movie__button movie__button_type_delete'
             aria-label='Удалить'>
-         </button>
+         </button> */}
          </div>
       </li>
     </>
