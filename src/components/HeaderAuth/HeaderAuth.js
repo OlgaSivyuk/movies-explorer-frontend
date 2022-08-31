@@ -1,17 +1,15 @@
 import React from 'react';
-// import { Link } from "react-router-dom"
+import { Link } from "react-router-dom"
 import './HeaderAuth.css';
 import logo from '../../images/logo.svg';
 import burger from '../../images/burger.svg'
-// import HeaderLogo from '../../images/logo-header.svg';
-// import BurgerMenu from '../../images/burger-menu-header.svg';
 
 function HeaderAuth() {
     return (
       <header className='header'>
-        <div className='header__logo'>
-          <img alt='o' className='header__logo-img' src={logo} />
-        </div>
+        <Link className='header__logo' to='/'>
+          <img alt='Логотип в форме бублика' className='header__logo-img' src={logo} />
+        </Link>
         {/* <ul className='header__navigation'>
           <li className='header__navigation-link header__navigation-link_active'>
           <a href='#' className='header__account-link'>Фильмы</a>

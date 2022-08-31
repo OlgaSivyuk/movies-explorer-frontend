@@ -1,16 +1,14 @@
 import React from 'react';
-// import { Link } from "react-router-dom"
+import { Link } from "react-router-dom"
 import './Header.css';
 import logo from '../../images/logo.svg';
-// import HeaderLogo from '../../images/logo-header.svg';
-// import BurgerMenu from '../../images/burger-menu-header.svg';
 
 function Header({isLoggedIn}) {
     return (
       <header className={`header ${!isLoggedIn ? 'header_pink' : ''}`}>
-        <div className='header__logo'>
-          <img alt='o' className='header__logo-img' src={logo} />
-        </div>
+        <Link className='header__logo' to='/'>
+          <img alt='Логотип в форме бублика' className='header__logo-img' src={logo} />
+        </Link>
         {/* <ul className='header__navigation'>
           <li className='header__navigation-link header__navigation-link_active'>Фильмы</li>
           <li className='header__navigation-link'>Сохраненные фильмы</li>
