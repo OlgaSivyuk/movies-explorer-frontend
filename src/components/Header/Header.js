@@ -3,7 +3,7 @@ import { Link, NavLink } from "react-router-dom"
 import './Header.css';
 import logo from '../../images/logo.svg';
 
-function Header({isLoggedIn}) {
+function Header({ isLoggedIn }) {
     return (
       <header className={`header ${!isLoggedIn ? 'header_pink' : ''}`}>
         <Link className='header__logo' to='/'>

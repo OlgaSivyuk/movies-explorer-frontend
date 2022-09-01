@@ -8,17 +8,17 @@
     min-height: 100vh;
     background-color: rgb(0, 0, 0, .3);
     visibility: hidden;
-    /* transition: visibility 0s, opacity .3s linear;
-    opacity: 0; */
+    transition: visibility 0s, opacity .3s linear;
+    opacity: 0;
     z-index: 1;
     right: 0;
     top: 0;
 }
 
-/* .navigation_visible {
+.navigation_visible {
     visibility: visible;
     opacity: 1;
-} */
+}
 
 .navigation__container {
     position: relative;

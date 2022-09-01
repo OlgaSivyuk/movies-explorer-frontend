@@ -9,7 +9,6 @@ import Movies from '../Movies/Movies';
 import SavedMovies from '../SavedMovies/SavedMovies';
 import Profile from '../Profile/Profile';
 import PageNotFound from '../PageNotFound/PageNotFound';
-// import Navigation from '../Navigation/Navigation';
 
 function App() {
   return (
@@ -22,7 +21,6 @@ function App() {
         <Route path='/saved-movies' element={<SavedMovies />} />
         <Route path='/profile' element={<Profile />} />
         <Route exact path='*' element={<PageNotFound />} />
-        {/* <Navigation/> */}
       </Routes>
     </div>
   );
