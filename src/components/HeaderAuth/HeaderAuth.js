@@ -5,7 +5,7 @@ import logo from '../../images/logo.svg';
 import Navigation from '../Navigation/Navigation';
 
 
-function HeaderAuth() {
+function HeaderAuth({ isLoggedIn }) {
   const [isNavigate, setIsNavigate] = useState(false);
 
   function handleOpenMenu() {

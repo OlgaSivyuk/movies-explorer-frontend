@@ -56,7 +56,6 @@
 }
 
 .header__buttons {
-    /* visibility: visible; */
     display: flex;
     align-items: center;
 }
@@ -79,8 +78,7 @@
 .header__button-signin {
     background-color: #000;
     padding: 8px 20px;
-    margin-left: 30px;
-    /* margin-right: 21px; */
+    margin: 0 0 0 30px;
     border-radius: 3px;
     color: #FFFFFF;
 }
@@ -107,11 +105,6 @@
         padding: 18px 30px;
     }
 
-    /* раскомментить,  после настройки стилей */
-    /* .header__navigation {
-        display: none;
-    } */
-
     .header__navigation {
         display: flex;
         list-style: none;
@@ -136,14 +129,4 @@
         padding: 5px 12px;
         margin-left: 14px;
     }
-
-    /* раскомментить,  после настройки стилей */
-    /* .header__navigation {
-        display: flex;
-        list-style: none;
-        justify-content: space-between;
-        align-items: center;
-        margin: 0;
-        padding: 0;
-    } */
 }
