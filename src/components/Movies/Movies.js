@@ -15,15 +15,17 @@ function Movies() {
       <HeaderAuth />
       <main className='movies'>
         <SearchForm />
-        {preloaderActive ? (<Preloader />) : (
-        <>
-        <MoviesCardList/>
-        <section className='more-cards'>
+        {preloaderActive ? (
+          <Preloader />
+        ) : (
+          <>
+            <MoviesCardList />
+            <section className='more-cards'>
               <button type='button' className='more-cards__button'>
                 Ещё
               </button>
-        </section>
-        </>
+            </section>
+          </>
         )}
       </main>
       <Footer />

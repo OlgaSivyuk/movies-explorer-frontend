@@ -10,8 +10,7 @@ function Portfolio() {
             className='portfolio__link'
             rel='noreferrer'
             target='_blank'
-            href='https://olgasivyuk.github.io/how-to-learn/'
-          >
+            href='https://olgasivyuk.github.io/how-to-learn/'>
             Статичный сайт
             <span className='portfolio__symbol-arrow'>↗</span>
           </a>
@@ -21,8 +20,7 @@ function Portfolio() {
             className='portfolio__link'
             rel='noreferrer'
             target='_blank'
-            href='https://olgasivyuk.github.io/russian-travel/'
-          >
+            href='https://olgasivyuk.github.io/russian-travel/'>
             Адаптивный сайт
             <span className='portfolio__symbol-arrow'>↗</span>
           </a>
@@ -32,8 +30,7 @@ function Portfolio() {
             className='portfolio__link'
             rel='noreferrer'
             target='_blank'
-            href='https://mesto.project.olgasivyuk.nomoredomains.xyz/'
-          >
+            href='https://mesto.project.olgasivyuk.nomoredomains.xyz/'>
             Одностраничное приложение
             <span className='portfolio__symbol-arrow'>↗</span>
           </a>

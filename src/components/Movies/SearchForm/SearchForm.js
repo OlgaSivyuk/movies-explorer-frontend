@@ -16,8 +16,7 @@ function SearchForm() {
           className='search-movie__input'
           type='text'
           placeholder={`Фильм`}
-          required
-        />
+          required/>
         <button className='search-movie__button' type='button'>
           Найти
         </button>
@@ -30,11 +29,11 @@ function SearchForm() {
             tumbOff ? 'checkbox__tumb_type_off' : ''
           }`}
           type='button'
-          onMouseDown={handleTumbOff}
-        ></button>
+          onMouseDown={handleTumbOff}>
+        </button>
       </label>
     </section>
   );
-};
+}
 
 export default SearchForm;

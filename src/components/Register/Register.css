@@ -47,24 +47,14 @@
 }
 
 .register__form-fields {
-  max-height: 70px;
+  height: 70px;
   display: flex;
   flex-direction: column;
   border: none;
-  border-bottom: 1px solid #e8e8e8;
   box-sizing: border-box;
-  margin: 6px 0 0 0;
-  padding: 0 0 10px;
-}
-
-.register__form-fields:focus-within {
-  border-bottom: 1px solid #000000;
-}
-
-.register__form-fields:nth-of-type(1) {
   margin: 0;
+  padding: 0;
 }
-
 
 .register__form-title {
   font-family: inherit;
@@ -73,6 +63,7 @@
   font-size: 10px;
   line-height: 12px;
   color: #A0A0A0;
+  padding: 0 0 5px;
 }
 
 .register__form-input {
@@ -83,8 +74,17 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;
-  padding: 0;
-  margin: 5px 0 0 0;
+  border-bottom: 1px solid #e8e8e8;
+  margin: 6px 0 0 0;
+  padding: 0 0 10px;
+}
+
+.register__form-input:focus-within {
+  border-bottom: 1px solid #000000;
+}
+
+.register__form-input:nth-of-type(1) {
+  margin: 0;
 }
 
 .register__form-input:focus {
@@ -98,14 +98,14 @@
   font-size: 10px;
   line-height: 12px;
   color: #FF4062;
-  margin: 16px 0 0 0;
+  margin: 6px 0 0 0;
 }
 
 .register__form-input_error {
   color: #FF4062;
 }
 
-.register__submit {
+.register__submit_button {
   width: 396px;
   height: 45px;
   background-color: #000000;
@@ -120,7 +120,7 @@
   transition: opacity 0.3s ease-in-out;
 }
 
-.register__submit:hover {
+.register__submit_button:hover {
   opacity: 0.5;
 }
 
@@ -131,9 +131,6 @@
   font-size: 14px;
   line-height: 17px;
   text-align: center;
-}
-
-.register__signin {
   margin: 16px 0 0 0;
   color: #a0a0a0;
 }
@@ -141,8 +138,12 @@
 .register__signin_link {
   text-decoration: none;
   color: #000000;
+  transition: opacity 0.3s ease-in-out;
 }
 
+.register__signin_link:hover {
+  opacity: 0.5;
+}
 
 @media screen and (max-width: 768px) {
   .register__logo {

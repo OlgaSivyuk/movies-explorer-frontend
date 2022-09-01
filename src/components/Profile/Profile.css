@@ -80,7 +80,7 @@
   font-weight: 500;
 }
 
-.profile__text {
+.profile__links {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -98,7 +98,11 @@
   padding: 0 0 16px;
   text-decoration: none;
   color: #FF4062;
+  transition: opacity 0.3s ease-in-out;
+}
 
+.profile__signout_link:hover {
+  opacity: 0.5;
 }
 
 .profile__change_button {
@@ -109,17 +113,23 @@
   line-height: 16px;
   text-align: center;
   padding: 0 0 16px;
-  text-decoration: none;
   color: #000000;
+  border: none;
+  background-color: #FFFFFF;
+  cursor: pointer;
+  transition: opacity 0.3s ease-in-out;
 }
 
+.profile__change_button:hover {
+  opacity: 0.5;
+}
 
 @media screen and (max-width: 768px) {
   .profile__title {
     padding: 236px 0 96px;
   }
 
-  .profile__text {
+  .profile__links {
     padding: 112px 0 0 0;
   }
 }
@@ -129,7 +139,7 @@
     padding: 70px 0 80px;
   }
 
-  .profile__text {
+  .profile__links {
     padding: 281px 0 0 0;
   }
 
