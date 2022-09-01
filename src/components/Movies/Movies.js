@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Movies.css';
 import HeaderAuth from '../HeaderAuth/HeaderAuth';
 import Preloader from './Preloader/Prelosder';
@@ -8,19 +8,25 @@ import Footer from '../Footer/Footer';
 
 
 function Movies() {
+  // проверка работы прелоадера
+  const [preloaderActive, setPreloaderActive] = useState(false);
   return (
     <>
       <HeaderAuth />
       <main className='movies'>
         <SearchForm />
-        <Preloader />
+        {preloaderActive ? (<Preloader />) : (
+        <>
         <MoviesCardList/>
         <section className='more-cards'>
               <button type='button' className='more-cards__button'>
                 Ещё
               </button>
         </section>
+        </>
+        )}
       </main>
+      
       <Footer />
     </>
   );

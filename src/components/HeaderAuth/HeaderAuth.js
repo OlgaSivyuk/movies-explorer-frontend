@@ -23,7 +23,7 @@ function HeaderAuth() {
           </a>
         </div> */}
         <div className='header__burger'>
-          <img className='header__burger-img' src={burger}></img>
+          <img className='header__burger-img' alt='меню-бургер' src={burger}></img>
         </div>
       </header>
     );

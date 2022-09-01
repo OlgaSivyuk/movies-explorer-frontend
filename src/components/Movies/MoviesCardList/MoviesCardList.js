@@ -2,7 +2,7 @@ import React from 'react';
 import './MoviesCardList.css';
 import MoviesCard from '../MoviesCard/MoviesCard'
 
-function MoviesCardList() {
+function MoviesCardList({ movieArray }) {
   return (
     <>
       <section className='movie-cards'>
