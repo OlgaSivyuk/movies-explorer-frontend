@@ -84,8 +84,8 @@
 
 .movie__button_type_delete {
   background-image: url(../../../images/close.svg);
-}
 
+}
 
 @media screen and (max-width: 892px) {
   .movie-card {
