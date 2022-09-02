@@ -85,7 +85,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 122px 0 0 0;
+  margin: 122px 0 0 0;
+  padding: 0;
 }
 
 .profile__signout_link {
@@ -130,7 +131,7 @@
   }
 
   .profile__links {
-    padding: 112px 0 0 0;
+    margin: 112px 0 0 0;
   }
 }
 
@@ -140,7 +141,7 @@
   }
 
   .profile__links {
-    padding: 281px 0 0 0;
+    margin: 69px 0 0 0;
   }
 
   .profile__form {
