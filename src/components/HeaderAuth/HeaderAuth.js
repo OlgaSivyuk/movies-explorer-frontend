@@ -19,7 +19,7 @@ function HeaderAuth({ isLoggedIn }) {
         </Link>
         <ul className='header__navigation'>
           <li className='header__navigation-link header__navigation-link_active'>
-          <NavLink to='/movies' className='header__account-link'>Фильмы</NavLink>
+          <NavLink to='/movies' className='header__account-link header__account-link_active'>Фильмы</NavLink>
           </li>
           <li className='header__navigation-link'>
             <NavLink to='/saved-movies' className='header__account-link'>Сохраненные фильмы</NavLink></li>

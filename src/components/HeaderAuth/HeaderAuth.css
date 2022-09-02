@@ -43,10 +43,6 @@
     margin-right: 0;
 }
 
-.header__navigation-link_active {
-    font-weight: 500;
-}
-
 .header__buttons {
     display: flex;
     align-items: center;
@@ -57,7 +53,7 @@
     align-items: center;
     font-family: inherit;
     font-style: normal;
-    font-weight: 500;
+    font-weight: 400;
     font-size: 14px;
     line-height: 16px;
     color: #000000;
@@ -68,6 +64,10 @@
 
 .header__account-link:hover {
     opacity: 0.5;
+}
+
+.header__account-link_active {
+    font-weight: 500;
 }
 
 .header__button-signin {

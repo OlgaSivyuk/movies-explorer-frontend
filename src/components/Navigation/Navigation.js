@@ -21,7 +21,7 @@ function Navigation(props) {
             Главная
           </Link>
           <Link
-            className='navigation__link navigation__link-active'
+            className='navigation__link navigation__link_active'
             to='/movies'>
             Фильмы
           </Link>
