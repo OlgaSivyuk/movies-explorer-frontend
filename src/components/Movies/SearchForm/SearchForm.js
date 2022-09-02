@@ -11,16 +11,16 @@ function SearchForm() {
 
   return (
     <section className='search'>
-      <label className='search-movie'>
+      <form className='search-movie'>
         <input
           className='search-movie__input'
           type='text'
           placeholder={`Фильм`}
           required/>
-        <button className='search-movie__button' type='button'>
+        <button className='search-movie__button' type='submit'>
           Найти
         </button>
-      </label>
+      </form>
 
       <label className='checkbox'>
         <p className='checkbox__title'>Короткометражки</p>
