@@ -1,6 +1,6 @@
 import React from 'react';
 import './Navigation.css';
-import { Link } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 
 function Navigation(props) {
   function handleCloseMenu() {
@@ -17,17 +17,15 @@ function Navigation(props) {
           ></button>
         </div>
         <div className='navigation__links'>
-          <Link className='navigation__link' to='/'>
+          <NavLink to='/' activeclassname='navigation__link_active' className='navigation__link' >
             Главная
-          </Link>
-          <Link
-            className='navigation__link navigation__link_active'
-            to='/movies'>
+          </NavLink>
+          <NavLink to='/movies' activeclassname='navigation__link_active' className='navigation__link'>
             Фильмы
-          </Link>
-          <Link className='navigation__link' to='/saved-movies'>
+          </NavLink>
+          <NavLink to='/saved-movies' activeclassname='navigation__link_active' className='navigation__link'>
             Сохранённые фильмы
-          </Link>
+          </NavLink>
         </div>
         <div className='navigation__button navigation__button_type_account'>
           <Link to='/profile' className='navigation__account-link'>
