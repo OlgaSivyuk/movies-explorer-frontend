@@ -1,7 +1,8 @@
 import React from 'react';
-
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
+import * as MainApi from "../../utils/MainApi.js";
+import * as MoviesApi from "../../utils/MoviesApi.js";
 import Main from '../Main/Main';
 import Register from '../Register/Register';
 import Login from '../Login/Login';
