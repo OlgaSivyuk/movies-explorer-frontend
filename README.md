@@ -1,10 +1,16 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 # movies-explorer-frontend  
 diploma project frontend part
 =======
 =======
 >>>>>>> 52aa3862e9ae8a42e2c97013d6edb034b8fb82c4
+=======
+# movies-explorer-frontend  
+diploma project frontend part
+=======
+>>>>>>> 598ea83521cf054222c9610cd3ada3dad0535054
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -76,6 +82,9 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 52aa3862e9ae8a42e2c97013d6edb034b8fb82c4
 =======
+=======
+>>>>>>> 598ea83521cf054222c9610cd3ada3dad0535054
 >>>>>>> 52aa3862e9ae8a42e2c97013d6edb034b8fb82c4
