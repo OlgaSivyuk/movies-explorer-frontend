@@ -1,4 +1,5 @@
-export const BASE_URL = "https://api.movies-sivyuko.nomoredomains.xyz/";
+// export const BASE_URL = "https://api.movies-sivyuko.nomoredomains.xyz";
+export const BASE_URL = 'http://localhost:3001';
 
 function checkResponse(res) {
   return res.ok 
@@ -6,8 +7,10 @@ function checkResponse(res) {
   : Promise.reject(`Ошибка...: ${res.status}`);
 }
 
+// проблемка с корс, nomod использовать нельзя
 export function register(name, email, password) {
     return fetch(`${BASE_URL}/signup`, {
+      // mode: 'no-cors',
       method: 'POST',
       headers: {
         'Accept': 'application/json',

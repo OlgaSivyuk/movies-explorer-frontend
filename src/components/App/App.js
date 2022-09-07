@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './App.css';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import * as MainApi from "../../utils/MainApi.js";
 import * as MoviesApi from "../../utils/MoviesApi.js";
@@ -17,19 +17,110 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
 
+
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    handleCheckToken();
+  }, []);
+
+  // useEffect(() => {
+  //   getProfileData();
+  // // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [loggedIn]);
+
+  // function getProfileData() {
+  //   // const data = localStorage.getItem('data', data);
+  //   if (loggedIn) {
+  //     MainApi
+  //     .getUser()
+  //     .then((res) => {
+  //       const resData = res.data;
+  //         setCurrentUser({
+  //           ...currentUser,
+  //           name: resData.name,
+  //           email: resData.email,
+  //           id: resData._id,
+  //         });
+          
+  //         navigate("/movies");
+  //       })
+  //       .catch((err) => console.log(`Ошибка...: ${err}`));
+  //   }
+  // };
+
+
+  function handleRegister({ name, email, password }) {
+    return MainApi.register(name, email, password)
+      .then((res) => {
+        console.log("res", res);
+        setCurrentUser({ ...currentUser, email, name });
+        setLoggedIn(true);
+        navigate("/signin");
+      })
+      .catch((err) => {
+        console.log(`Ошибка...: ${err}`);
+      });
+  }
+
+  function handleLogin({ email, password }) {
+    return MainApi.authorize(email, password)
+      .then((data) => {
+        if (data.email) {
+          // setLoggedIn(true);
+          // setCurrentUser({ _id: data._id, email: data.email });
+          localStorage.setItem('email', data.email);
+          handleCheckToken();
+          navigate('/movies');
+        }
+      })
+      .catch((err) => {
+        console.log(`Ошибка...: ${err}`);
+      });
+  }
+
+  function handleCheckToken() {
+    if (localStorage.getItem('email')) {
+      MainApi.getUser()
+        .then((res) => {
+          const { _id, email, name } = res.data;
+          setLoggedIn(true);
+          setCurrentUser({ _id, email, name});
+        })
+        .catch((err) => {
+          console.log(`Ошибка...: ${err}`);
+        });
+    }
+  }
+
+  function handleSignOut() {
+    return MainApi.signout()
+      .then(() => {
+        localStorage.removeItem('email');
+        setLoggedIn(false);
+        setCurrentUser({});
+        navigate('/signin');
+    })
+    .catch((err) => {
+      console.log(`Ошибка...: ${err}`);
+    });
+  }
+
+
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
         <Routes>
+          <Route exact path="/" element={<Main loggedIn={loggedIn} />} />
           <Route
-            exact
-            path="/"
-            element={
-                <Main loggedIn={loggedIn}/>
-            }
+            path="/signup"
+            element={<Register handleRegister={handleRegister} />}
           />
-          <Route path="/signup" element={<Register />} />
-          <Route path="/signin" element={<Login />} />
+          <Route path="/signin" element={<Login handleLogin={handleLogin} />} />
+
+        
           <Route
             path="/movies"
             element={
@@ -38,18 +129,19 @@ function App() {
               </ProtectedRoute>
             }
           />
-          {/* <Route
+{/* 
+          <Route
             path="/movies"
             element={
-                <Movies />
+                <Movies loggedIn={loggedIn}/>
             }
           /> */}
+
           <Route
             path="/saved-movies"
             element={
               <ProtectedRoute loggedIn={loggedIn}>
-                <SavedMovies loggedIn={loggedIn}
-                />
+                <SavedMovies loggedIn={loggedIn} />
               </ProtectedRoute>
             }
           />
@@ -57,7 +149,9 @@ function App() {
             path="/profile"
             element={
               <ProtectedRoute loggedIn={loggedIn}>
-                <Profile loggedIn={loggedIn}/>
+                <Profile 
+                loggedIn={loggedIn}  
+                handleSignOut={handleSignOut}/>
               </ProtectedRoute>
             }
           />
