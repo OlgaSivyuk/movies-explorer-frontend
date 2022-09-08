@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom'
 import './HeaderAuth.css';
 import logo from '../../images/logo.svg';
 import Navigation from '../Navigation/Navigation';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
 
 function HeaderAuth({ isLoggedIn }) {
+  const currentUser = useContext(CurrentUserContext);
   const [isNavigate, setIsNavigate] = useState(false);
 
   function handleOpenMenu() {
@@ -25,7 +27,7 @@ function HeaderAuth({ isLoggedIn }) {
             <NavLink to='/saved-movies' className='header__account-link'>Сохраненные фильмы</NavLink></li>
         </ul>
         <div className='header__buttons header__buttons_type_account'>
-          <NavLink to='/profile' className='header__account-link'>Аккаунт
+          <NavLink to='/profile' className='header__account-link'>Аккаунт: {currentUser.name}
             <span className='header__img-account'></span>
           </NavLink>
         </div>

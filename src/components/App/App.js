@@ -16,6 +16,7 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
+  const [isMessage, setMessage] = useState({text: ""});
 
 
 
@@ -25,30 +26,6 @@ function App() {
     handleCheckToken();
   }, []);
 
-  // useEffect(() => {
-  //   getProfileData();
-  // // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [loggedIn]);
-
-  // function getProfileData() {
-  //   // const data = localStorage.getItem('data', data);
-  //   if (loggedIn) {
-  //     MainApi
-  //     .getUser()
-  //     .then((res) => {
-  //       const resData = res.data;
-  //         setCurrentUser({
-  //           ...currentUser,
-  //           name: resData.name,
-  //           email: resData.email,
-  //           id: resData._id,
-  //         });
-          
-  //         navigate("/movies");
-  //       })
-  //       .catch((err) => console.log(`Ошибка...: ${err}`));
-  //   }
-  // };
 
 
   function handleRegister({ name, email, password }) {
@@ -107,6 +84,27 @@ function App() {
     });
   }
 
+  function handleUpdateUser({ name, email }) {
+    MainApi
+      .updateUser(name, email)
+      .then((res) => {
+        console.log("update_user", res.data);
+        const resData = res.data;
+        setCurrentUser({
+          // ...resData,
+          ...currentUser,
+          name: resData.name,
+          description: resData.about,
+          avatar: resData.avatar,
+        });
+        setMessage({text: 'Данные профиля обновлены!'});
+        setTimeout(() => {
+          setMessage({text: ''})
+        }, 3000);
+      })
+      .catch((err) => console.error(`Ошибка...: ${err}`));
+  }
+
 
 
   return (
@@ -151,7 +149,9 @@ function App() {
               <ProtectedRoute loggedIn={loggedIn}>
                 <Profile 
                 loggedIn={loggedIn}  
-                handleSignOut={handleSignOut}/>
+                handleSignOut={handleSignOut}
+                onUpdateUser={handleUpdateUser}
+                statusProfile={isMessage.text}/>
               </ProtectedRoute>
             }
           />

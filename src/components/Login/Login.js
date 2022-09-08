@@ -2,11 +2,11 @@ import React, {useState, useContext} from 'react';
 import { Link } from 'react-router-dom';
 import './Login.css';
 import logo from '../../images/logo.svg';
-import { CurrentUserContext } from '../../contexts/CurrentUserContext'; //для проверки,  удалить
+// import { CurrentUserContext } from '../../contexts/CurrentUserContext'; //для проверки,  удалить
 
 function Login({handleLogin}) {
 
-  const userData = useContext(CurrentUserContext);//для проверки,  удалить
+  //const userData = useContext(CurrentUserContext);//для проверки,  удалить
   const [data, setData] = useState({
     password: '',
     email: '',
@@ -21,7 +21,7 @@ function Login({handleLogin}) {
   function handleSubmit(event) {
     event.preventDefault();
     // console.log('data', data)
-    console.log('userData', userData)
+    // console.log('userData', userData)
     const { password, email } = data;
     handleLogin({ password, email });
 }
