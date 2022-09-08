@@ -20,13 +20,11 @@ function App() {
   const [isErrorMessage, setErrorMessage] = useState({text: ""});
 
 
-
   const navigate = useNavigate();
 
   useEffect(() => {
     handleCheckToken();
   }, []);
-
 
 
   function handleRegister({ name, email, password }) {
@@ -54,7 +52,7 @@ function App() {
           // setCurrentUser({ _id: data._id, email: data.email });
           localStorage.setItem('email', data.email);
           handleCheckToken();
-          navigate('/movies');
+          navigate('/movies', {state: {loggedIn: true}});
         }
       })
       .catch((err) => {
@@ -67,6 +65,7 @@ function App() {
   }
 
   function handleCheckToken() {
+    // debugger;
     if (localStorage.getItem('email')) {
       MainApi.getUser()
         .then((res) => {
@@ -77,6 +76,10 @@ function App() {
         .catch((err) => {
           console.log(`Ошибка...: ${err}`);
         });
+    }
+    else {
+      setLoggedIn(false);
+      setCurrentUser({ });
     }
   }
 
@@ -114,7 +117,7 @@ function App() {
   }
 
 
-
+debugger;
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">

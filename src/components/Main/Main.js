@@ -10,20 +10,20 @@ import Header from '../Header/Header';
 import HeaderAuth from '../HeaderAuth/HeaderAuth';
 import Footer from '../Footer/Footer';
 
-function Main() {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
-  const location = useLocation();
+function Main({loggedIn}) {
+  // const [isLoggedIn, setIsLoggedIn] = useState(loggedIn);
+  // const location = useLocation();
   // const aboutProjectRef = useRef();
 
-  useEffect(() => {
-    if (location.pathname === '/') {
-      setIsLoggedIn(false);
-    }
-  }, [location]);
+  // useEffect(() => {
+  //   if (location.pathname === '/') {
+  //     setIsLoggedIn(false);
+  //   }
+  // }, [location]);
 
   return (
     <>
-      {isLoggedIn ? <HeaderAuth /> : <Header />}
+      {loggedIn ? <HeaderAuth /> : <Header />}
       <main className='content'>
         {/* <Promo aboutProjectRef={aboutProjectRef}/> */}
         <Promo />

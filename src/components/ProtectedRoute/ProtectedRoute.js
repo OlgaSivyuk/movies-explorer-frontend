@@ -1,11 +1,12 @@
 import React from 'react';
 import { Navigate } from 'react-router-dom';
 
-const ProtectedRoute = ({ loggedIn, children }) => {
+const ProtectedRoute = (props) => {
+  debugger;
   return (
     <>
       {
-        loggedIn ? children : <Navigate to='/' />
+        props.loggedIn ? props.children : <Navigate to='/' replace />
       }
     </>
   );

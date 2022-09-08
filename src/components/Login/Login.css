@@ -101,6 +101,10 @@
   margin: 6px 0 0 0;
 }
 
+.login_error_hide {
+  display: none;
+}
+
 .login__form-input_error {
   color: #FF4062;
 }
@@ -121,6 +125,11 @@
 }
 
 .login__submit_button:hover {
+  opacity: 0.5;
+}
+
+.login__submit_button:disabled {
+  cursor: default;
   opacity: 0.5;
 }
 

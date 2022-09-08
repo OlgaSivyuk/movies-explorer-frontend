@@ -100,4 +100,12 @@ const movieArrey = [
     },
   ];
   
-  export { movieArrey };
+
+  const EMAIL_REGEX = /^[-\w.]+@([A-z0-9][-A-z0-9]+\.)+[A-z]{2,4}$/;
+  const PASSWORD_REGEX = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$/;
+
+  export { 
+    movieArrey, 
+    EMAIL_REGEX,
+    PASSWORD_REGEX, 
+  };
