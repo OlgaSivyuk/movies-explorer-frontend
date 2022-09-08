@@ -1,12 +1,46 @@
-import React, {useState, useContext} from 'react';
+import React, {useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Login.css';
 import logo from '../../images/logo.svg';
-// import { CurrentUserContext } from '../../contexts/CurrentUserContext'; //для проверки,  удалить
 
-function Login({handleLogin}) {
+function Login({handleLogin, errorMessage }) {
+// вариант рекомендация 
 
-  //const userData = useContext(CurrentUserContext);//для проверки,  удалить
+// const [email, setEmail] = useState("");
+// const [password, setPassword] = useState("");
+//     const [isValidEmail, setIsValidEmail] = useState(false);
+//     const [isValidPassword, setIsValidPassword] = useState(false);
+//     const [errorEmail, setErrorEmail] = useState("");
+//     const [errorPassword, setErrorPassword] = useState("");
+
+//     function handleEmailChange(evt) {
+//         const input = evt.target;
+//         setEmail(input.value);
+//         setIsValidEmail(input.validity.valid);
+//         if(!isValidEmail) {
+//             setErrorEmail(input.validationMessage)
+//         } else {
+//             setErrorEmail("");
+//         }
+//     }
+
+//     function handlePasswordChange(evt) {
+//         const input = evt.target;
+//         setPassword(input.value);
+//         setIsValidPassword(input.validity.valid);
+//         if(!isValidPassword) {
+//             setErrorPassword(input.validationMessage)
+//         } else {
+//             setErrorPassword("");
+//         }
+//     }
+
+//     function handleSubmit(evt) {
+//         evt.preventDefault();
+//         handleLogin(email, password);
+//     }
+
+// первоначальный вариант  
   const [data, setData] = useState({
     password: '',
     email: '',
@@ -20,8 +54,7 @@ function Login({handleLogin}) {
 
   function handleSubmit(event) {
     event.preventDefault();
-    // console.log('data', data)
-    // console.log('userData', userData)
+    console.log('data', data)
     const { password, email } = data;
     handleLogin({ password, email });
 }
@@ -33,6 +66,7 @@ function Login({handleLogin}) {
       </Link>
       <h2 className='login__title login__title-text'>Рады видеть!</h2>
       <form className='login__form' onSubmit={handleSubmit}>
+      <span className="login__error-message">{errorMessage}</span>
         <fieldset className='login__form-fields'>
           <label className='login__form-title'>E-mail</label>
           <input
@@ -42,7 +76,7 @@ function Login({handleLogin}) {
             placeholder='Введите адрес электронной почты'
             name='email'
             onChange={handleChange}
-            value={data.email}>
+            value={data.email || ''}>
           </input>
           <span className='login__error'></span>
         </fieldset>
@@ -55,11 +89,9 @@ function Login({handleLogin}) {
             placeholder='Введите пароль'
             name='password'
             onChange={handleChange}
-            value={data.password}>
+            value={data.password || ''}>
           </input>
-          <span className='login__error' type='text'>
-            Что-то пошло не так...
-          </span>
+          <span className='login__error' type='text'></span>
         </fieldset>
         <button className='login__submit_button' type='submit'>
         Войти

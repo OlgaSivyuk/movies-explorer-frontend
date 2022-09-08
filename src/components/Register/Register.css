@@ -144,6 +144,17 @@
   opacity: 0.5;
 }
 
+.register__error-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 13px;
+  line-height: 16px;
+  color: #FF4062;
+  margin: 0 0 20px 0;
+  padding: 0;
+}
+
 @media screen and (max-width: 768px) {
   .register__logo {
     padding: 232px 0 0 0;

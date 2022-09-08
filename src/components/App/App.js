@@ -16,7 +16,8 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
-  const [isMessage, setMessage] = useState({text: ""});
+  const [isOkMessage, setOkMessage] = useState({text: ""});
+  const [isErrorMessage, setErrorMessage] = useState({text: ""});
 
 
 
@@ -32,11 +33,15 @@ function App() {
     return MainApi.register(name, email, password)
       .then((res) => {
         console.log("res", res);
-        setCurrentUser({ ...currentUser, email, name });
+        setCurrentUser({ ...currentUser, email, name, password });
         setLoggedIn(true);
-        navigate("/signin");
+        navigate("/movies");
       })
       .catch((err) => {
+        if (err === `Ошибка...: 409`) {
+          return setErrorMessage(
+            {text: 'Пользователь с указанным email уже зарегистрирован'});
+        };
         console.log(`Ошибка...: ${err}`);
       });
   }
@@ -53,6 +58,10 @@ function App() {
         }
       })
       .catch((err) => {
+        if (err === `Ошибка...: 401`) {
+          return setErrorMessage(
+            {text: 'Неправильные email или пароль'});
+        };
         console.log(`Ошибка...: ${err}`);
       });
   }
@@ -91,18 +100,17 @@ function App() {
         console.log("update_user", res.data);
         const resData = res.data;
         setCurrentUser({
-          // ...resData,
           ...currentUser,
           name: resData.name,
-          description: resData.about,
-          avatar: resData.avatar,
+          email: resData.email,
         });
-        setMessage({text: 'Данные профиля обновлены!'});
+        setOkMessage({text: 'Данные профиля обновлены!'});
         setTimeout(() => {
-          setMessage({text: ''})
+          setOkMessage({text: ''})
         }, 3000);
       })
-      .catch((err) => console.error(`Ошибка...: ${err}`));
+      .catch((err) => 
+      console.error(`Ошибка...: ${err}`));
   }
 
 
@@ -114,9 +122,13 @@ function App() {
           <Route exact path="/" element={<Main loggedIn={loggedIn} />} />
           <Route
             path="/signup"
-            element={<Register handleRegister={handleRegister} />}
+            element={<Register 
+              handleRegister={handleRegister}
+              errorMessage={isErrorMessage.text} />}
           />
-          <Route path="/signin" element={<Login handleLogin={handleLogin} />} />
+          <Route path="/signin" element={<Login 
+          handleLogin={handleLogin}
+          errorMessage={isErrorMessage.text} />} />
 
         
           <Route
@@ -151,7 +163,7 @@ function App() {
                 loggedIn={loggedIn}  
                 handleSignOut={handleSignOut}
                 onUpdateUser={handleUpdateUser}
-                statusProfile={isMessage.text}/>
+                statusProfile={isOkMessage.text}/>
               </ProtectedRoute>
             }
           />

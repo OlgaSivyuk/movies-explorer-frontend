@@ -15,6 +15,6 @@ function Header({ isLoggedIn }) {
         </div>
       </header>
     );
-  }
+}
 
   export default Header;

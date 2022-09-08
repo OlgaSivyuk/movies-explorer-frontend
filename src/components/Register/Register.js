@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import './Register.css';
 import logo from '../../images/logo.svg';
 
-function Register({ handleRegister }) {
+function Register({ handleRegister, errorMessage }) {
   const [data, setData] = useState({
     name: '',
     password: '',
@@ -32,6 +32,7 @@ function Register({ handleRegister }) {
         Добро пожаловать!
       </h2>
       <form className='register__form' onSubmit={handleSubmit}>
+      <span className="register__error-message">{errorMessage}</span>
         <fieldset className='register__form-fields'>
           <label className='register__form-title'>Имя</label>
           <input

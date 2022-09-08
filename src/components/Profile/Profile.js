@@ -9,8 +9,6 @@ function Profile({ handleSignOut, onUpdateUser, statusProfile }) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [activeButton, setActiveButton] = useState(false);
-  // const [errorName, setErrorName] = useState("");
-  // const [errorEmail, setErrorEmail] = useState("");
   
 
   function handleNameChange(e) {
@@ -63,8 +61,8 @@ useEffect(() => {
               name='name'
               value={name || ''}
               placeholder={currentUser.name}
-              minLength={2}
-              maxLength={100}
+              minLength='2'
+              maxLength='50'
               onChange={handleNameChange}
             ></input>
             {/* <span className="profile__form-error-message">{errorName}</span> */}

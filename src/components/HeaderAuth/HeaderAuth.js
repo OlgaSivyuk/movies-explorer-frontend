@@ -27,7 +27,7 @@ function HeaderAuth({ isLoggedIn }) {
             <NavLink to='/saved-movies' className='header__account-link'>Сохраненные фильмы</NavLink></li>
         </ul>
         <div className='header__buttons header__buttons_type_account'>
-          <NavLink to='/profile' className='header__account-link'>Аккаунт: {currentUser.name}
+          <NavLink to='/profile' className='header__account-link'>{currentUser.name}
             <span className='header__img-account'></span>
           </NavLink>
         </div>

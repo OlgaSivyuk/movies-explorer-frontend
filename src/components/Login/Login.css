@@ -145,6 +145,17 @@
   opacity: 0.5;
 }
 
+.login__error-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 13px;
+  line-height: 16px;
+  color: #FF4062;
+  margin: 0 0 20px 0;
+  padding: 0;
+}
+
 
 @media screen and (max-width: 768px) {
   .login__logo {
