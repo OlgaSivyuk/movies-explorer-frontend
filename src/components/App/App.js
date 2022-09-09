@@ -45,19 +45,20 @@ function App() {
   }
 
   function handleLogin({ email, password }) {
-    return MainApi.authorize(email, password)
+    MainApi.authorize(email, password)
       .then((data) => {
         if (data.email) {
+          localStorage.setItem('email', data.email);
           // setLoggedIn(true);
           // setCurrentUser({ _id: data._id, email: data.email });
-          localStorage.setItem('email', data.email);
-          handleCheckToken();
-          navigate('/movies', {state: {loggedIn: true}});
+          handleCheckToken().then(()=>{
+            navigate('/movies');
+          });
         }
       })
       .catch((err) => {
         if (err === `Ошибка...: 401`) {
-          return setErrorMessage(
+          setErrorMessage(
             {text: 'Неправильные email или пароль'});
         };
         console.log(`Ошибка...: ${err}`);
@@ -67,7 +68,7 @@ function App() {
   function handleCheckToken() {
     // debugger;
     if (localStorage.getItem('email')) {
-      MainApi.getUser()
+      return MainApi.getUser()
         .then((res) => {
           const { _id, email, name } = res.data;
           setLoggedIn(true);
@@ -80,6 +81,7 @@ function App() {
     else {
       setLoggedIn(false);
       setCurrentUser({ });
+      return Promise.reject()
     }
   }
 
@@ -117,7 +119,7 @@ function App() {
   }
 
 
-debugger;
+// debugger;
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
@@ -142,13 +144,6 @@ debugger;
               </ProtectedRoute>
             }
           />
-{/* 
-          <Route
-            path="/movies"
-            element={
-                <Movies loggedIn={loggedIn}/>
-            }
-          /> */}
 
           <Route
             path="/saved-movies"
