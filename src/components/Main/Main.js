@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import './Main.css';
-import { useLocation } from 'react-router-dom';
+// import { useLocation } from 'react-router-dom';
 import Promo from './Promo/Promo';
 import AboutProject from './AboutProject/AboutProject';
 import Techs from './Techs/Techs';

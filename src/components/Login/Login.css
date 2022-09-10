@@ -128,9 +128,19 @@
   opacity: 0.5;
 }
 
-.login__submit_button:disabled {
+/* .login__submit_button:disabled {
   cursor: default;
   opacity: 0.5;
+} */
+
+.login__submit_button_disabled {
+  background-color: #e6e6e6;
+}
+
+.login__submit_button_disabled:hover {
+  background-color: #e6e6e6;
+  cursor: auto;
+  opacity: 1;
 }
 
 .login__signin {
