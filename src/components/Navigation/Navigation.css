@@ -57,8 +57,6 @@
     position: absolute;
     right: 0;
     top: 0;
-    
-
 }
 
 .navigation__button_type_close:hover {
@@ -96,6 +94,17 @@
 }
 
 .navigation__link_active {
+    font-family: inherit;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+    color: #000000;
+    text-decoration: none;
+    padding: 4px 0;
+    margin: 0 0 20px;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
     border-color: #000000;
 }
 

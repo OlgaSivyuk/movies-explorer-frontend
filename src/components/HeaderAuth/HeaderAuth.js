@@ -16,7 +16,7 @@ function HeaderAuth() {
   }
 
     return (
-      <header className={`header ${ location.pathname === '/' ? 'header_pink' : ''}`}>
+      <header className={`header ${ location.pathname === '/' ? 'header_pink' : '' }`}>
         <Link className='header__logo' to='/'>
           <img alt='Логотип в форме бублика' className='header__logo-img' src={logo} />
         </Link>
@@ -33,8 +33,8 @@ function HeaderAuth() {
           </NavLink>
         </div>
         <div className='header__burger'>
-          <button className='header__burger_button' aria-label='меню-бургер' type='button' onClick={handleOpenMenu}></button>
-          <Navigation setIsNavigate={setIsNavigate} className={`navigation ${isNavigate ? 'navigation_visible' : ''}`}/>
+          <button className={`header__burger_button ${ location.pathname === '/' ? 'header__burger_button_pink' : '' }`} aria-label='меню-бургер' type='button' onClick={handleOpenMenu}></button>
+          <Navigation setIsNavigate={setIsNavigate} className={`navigation ${isNavigate ? 'navigation_visible' : '' }`}/>
         </div>
       </header>
     );
