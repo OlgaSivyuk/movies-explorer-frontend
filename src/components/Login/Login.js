@@ -30,7 +30,6 @@ function onSubmit(data) {
       </Link>
       <h2 className='login__title login__title-text'>Рады видеть!</h2>
       <form className='login__form' onSubmit={handleSubmit(onSubmit)}>
-      <span className="login__error-message">{errorMessage}</span>
         <fieldset className='login__form-fields'>
           <label className='login__form-title'>E-mail</label>
           <input
@@ -65,6 +64,7 @@ function onSubmit(data) {
           </input>
           { errors?.password && <span className='login__error' type='text'>{errors?.password?.message}</span> }
         </fieldset>
+        <span className="login__error-message">{errorMessage}</span>
         <button 
         className={`login__submit_button ${!isValid ? 'login__submit_button_disabled' : ''}`}
             disabled={!isValid}
