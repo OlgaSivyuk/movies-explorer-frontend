@@ -21,11 +21,11 @@ function HeaderAuth() {
           <img alt='Логотип в форме бублика' className='header__logo-img' src={logo} />
         </Link>
         <ul className='header__navigation'>
-          <li className='header__navigation-link header__navigation-link_active'>
-          <NavLink to='/movies' className='header__account-link header__account-link_active'>Фильмы</NavLink>
+          <li className='header__navigation-link'>
+          <NavLink to='/movies' className={`header__account-link ${ location.pathname === '/movies' ? 'header__account-link_active' : '' }`}>Фильмы</NavLink>
           </li>
           <li className='header__navigation-link'>
-            <NavLink to='/saved-movies' className='header__account-link'>Сохраненные фильмы</NavLink></li>
+            <NavLink to='/saved-movies' className={`header__account-link ${ location.pathname === '/saved-movies' ? 'header__account-link_active' : '' }`}>Сохраненные фильмы</NavLink></li>
         </ul>
         <div className='header__buttons header__buttons_type_account'>
           <NavLink to='/profile' className='header__account-link'>{currentUser.name}
