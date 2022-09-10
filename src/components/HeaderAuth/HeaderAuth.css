@@ -98,6 +98,21 @@
     margin: 0 0 0 17px;
 }
 
+.header__img-account_pink {
+    background: #f7d8fb;
+    background-image: url(../../images/account.svg);
+    height: 30px;
+    width: 26px;
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    display: block;
+    background-repeat: no-repeat;
+    float: right;
+    background-position: center;
+    margin: 0 0 0 17px;
+}
+
 .header__burger {
     display: none;
     align-items: center;

@@ -11,6 +11,7 @@ function Login({ handleLogin, errorMessage }) {
     register,
     formState: { errors, isValid, },
     handleSubmit,
+    reset,
   } = useForm({
     mode: 'all',
     defaultValues: {
@@ -21,6 +22,7 @@ function Login({ handleLogin, errorMessage }) {
 
 function onSubmit(data) {
   handleLogin(data);
+  reset();
 }
 
   return (

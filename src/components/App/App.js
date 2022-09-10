@@ -33,6 +33,7 @@ function App() {
         console.log("res", res);
         setCurrentUser({ ...currentUser, email, name, password });
         setLoggedIn(true);
+        handleLogin({ email, password }); // добавила функцию логина
         navigate("/movies");
       })
       .catch((err) => {
@@ -49,8 +50,6 @@ function App() {
       .then((data) => {
         if (data.email) {
           localStorage.setItem('email', data.email);
-          // setLoggedIn(true);
-          // setCurrentUser({ _id: data._id, email: data.email });
           handleCheckToken().then(()=>{
             navigate('/movies');
           });
