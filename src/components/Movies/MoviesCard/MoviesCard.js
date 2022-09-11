@@ -44,24 +44,3 @@ function MoviesCard({image, nameRU, duration } ) {
 }
 
 export default MoviesCard;
-
-
-// const movies = [
-//   {
-//   nameRU: '33 слова о дизайне',
-//   duration: '1ч 47м',
-//   image: movieImg,
-//   },
-
-//   {
-//     nameRU: '333 слова о дизайне',
-//     duration: '1ч 47м',
-//     image: movieImg,
-//     },
-
-//     {
-//       nameRU: '3333 слова о дизайне',
-//       duration: '1ч 47м',
-//       image: movieImg,
-//       }
-// ]

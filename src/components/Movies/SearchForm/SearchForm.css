@@ -117,7 +117,7 @@
   background-image: url('../../../images/smalltumboff.svg');
 }
 
-.search-movie__error {
+.search-movie__error-message {
   height: 16px;
   display: flex;
   justify-content: center;

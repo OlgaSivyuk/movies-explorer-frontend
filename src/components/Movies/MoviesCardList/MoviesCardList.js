@@ -5,6 +5,7 @@ import MoviesCard from '../MoviesCard/MoviesCard'
 
 
 function MoviesCardList({movies}) {
+  debugger;
   return (
     <>
       <section className='movie-cards'>
