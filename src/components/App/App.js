@@ -38,8 +38,11 @@ function App() {
       })
       .catch((err) => {
         if (err === `Ошибка...: 409`) {
-          return setErrorMessage(
+          setErrorMessage(
             {text: 'Пользователь с указанным email уже зарегистрирован'});
+          setTimeout(() => {
+              setErrorMessage(false);
+          }, 3000);
         };
         console.log(`Ошибка...: ${err}`);
       });
@@ -59,6 +62,9 @@ function App() {
         if (err === `Ошибка...: 401`) {
           setErrorMessage(
             {text: 'Неправильные email или пароль'});
+          setTimeout(() => {
+            setErrorMessage(false);
+            }, 3000);
         };
         console.log(`Ошибка...: ${err}`);
       });
@@ -90,7 +96,7 @@ function App() {
         localStorage.removeItem('email');
         setLoggedIn(false);
         setCurrentUser({});
-        navigate('/signin');
+        navigate('/');
     })
     .catch((err) => {
       console.log(`Ошибка...: ${err}`);

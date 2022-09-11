@@ -1,26 +1,27 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import './MoviesCard.css';
-import movieImg from '../../../images/movie-img.svg';
+// import movieImg from '../../../images/movie-img.svg';
 
-function MoviesCard() {
-  const [liked, setLiked] = useState(false);
-  const { pathname } = useLocation();
+function MoviesCard({image, nameRU, duration } ) {
+  const [saved, setSaved] = useState(false);
+  const location = useLocation();
+
 
   function handleLike() {
-    setLiked(!liked);
+    setSaved(!saved);
   }
 
   return (
     <>
-      <li className='movie-card'>
-        <img className='movie__image' alt='Кадр из фильма' src={movieImg} />
+      <li className='movie-card' >
+        <img className='movie__image' alt='Кадр из фильма' src={image} />
         <div className='movie__container'>
           <div className='movie__info'>
-            <h3 className='movie__title'>33 слова о дизайне</h3>
-            <span className='movie__duration'>1ч 47м</span>
+            <h3 className='movie__title'>{nameRU}</h3>
+            <span className='movie__duration'>{duration} мин</span>
           </div>
-          {pathname === '/saved-movies' ? (
+          {location.pathname === '/saved-movies' ? (
             <button
               className='movie__button movie__button_type_delete'
               aria-label='Удалить'
@@ -29,11 +30,11 @@ function MoviesCard() {
           ) : (
             <button
               className={`movie__button movie__button_type_like ${
-                liked ? 'movie__button_type_like_active' : ''
+                saved ? 'movie__button_type_like_active' : ''
               }`}
               aria-label='Нравится'
               type='button'
-              onMouseDown={handleLike}>
+              onClick={handleLike}>
               </button>
           )}
         </div>
@@ -43,3 +44,24 @@ function MoviesCard() {
 }
 
 export default MoviesCard;
+
+
+// const movies = [
+//   {
+//   nameRU: '33 слова о дизайне',
+//   duration: '1ч 47м',
+//   image: movieImg,
+//   },
+
+//   {
+//     nameRU: '333 слова о дизайне',
+//     duration: '1ч 47м',
+//     image: movieImg,
+//     },
+
+//     {
+//       nameRU: '3333 слова о дизайне',
+//       duration: '1ч 47м',
+//       image: movieImg,
+//       }
+// ]

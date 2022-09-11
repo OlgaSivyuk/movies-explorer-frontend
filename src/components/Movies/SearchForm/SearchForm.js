@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './SearchForm.css';
 
-function SearchForm() {
+function SearchForm({handleSubmit, handleChange, value}) {
   // проверка работы тумблера
   const [tumbOff, setTumbOff] = useState(false);
 
@@ -9,13 +9,19 @@ function SearchForm() {
     setTumbOff(!tumbOff);
   }
 
+  // function handleSaerch(e) {
+  //   e.preventDefault(); 
+  //   console.log("clicked")}
+
   return (
     <section className='search'>
-      <form className='search-movie'>
+      <form className='search-movie' onSubmit={handleSubmit}>
         <input
           className='search-movie__input'
           type='text'
           placeholder={`Фильм`}
+          onChange={handleChange}
+          value={value}
           required/>
         <button className='search-movie__button' type='submit'>
           Найти
