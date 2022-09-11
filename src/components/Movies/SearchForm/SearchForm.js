@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import './SearchForm.css';
 
-function SearchForm({ errorMessage, handleSearch, searchString, isShorts}) {
+function SearchForm({ errorMessage, fetchAllMovies, searchString, isShorts}) {
   // debugger;
   // проверка работы тумблера
-  const [tumbOff, setTumbOff] = useState(isShorts);
-  const [inputValue, setInputValue] = useState(searchString)
+  const [tumbOff, setTumbOff] = useState(false);
+  const [inputValue, setInputValue] = useState([])
   const [isValidInput, setIsValidInput] = useState(false);
 
   function handleTumbOff() {
@@ -21,7 +21,7 @@ function SearchForm({ errorMessage, handleSearch, searchString, isShorts}) {
   function handleSubmit(evt) {
     evt.preventDefault();
     console.log("clicked")
-    handleSearch(inputValue, tumbOff);
+    fetchAllMovies(inputValue, tumbOff);
 }
 
   return (

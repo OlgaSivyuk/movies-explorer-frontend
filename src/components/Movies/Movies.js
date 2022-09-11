@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Movies.css';
 import HeaderAuth from '../HeaderAuth/HeaderAuth';
 import Preloader from './Preloader/Preloader';
@@ -9,36 +9,41 @@ import * as MoviesApi from "../../utils/MoviesApi.js";
 
 
 function Movies() {
-
-  // проверка работы прелоадера
   const [isLoading, setIsLoading] = useState(false);
-  
-let movies = [];
-let searchString = '';
-let isShorts = false;
-const localDataString = localStorage.getItem('moviesData');
+  const [moviesData, setMoviesData] = useState([]);
+  const [filteredMoviesData, setFilteredMoviesData] = useState([]);
+  const [isError, setIsError] = useState(false);
+  const [isShortsTumb, setIsShortsTumb] = useState(false);
 
-if (localDataString !== null){
-  const localData = JSON.parse(localDataString);
-  movies = localData.moviesData;
-  searchString = localData.searchString;
-  isShorts = localData.isShorts;
+  const [isSearchedValue, setIsSearchedValue] = useState(localStorage.getItem('searchMoviesValue'));
+
+useEffect(() => {
+const localStorageMoviesData = localStorage.getItem('moviesData');
+
+if (localStorageMoviesData !== null){
+  const allData = JSON.parse(localStorageMoviesData);
+  setMoviesData(allData.moviesData);
+  // searchString = allData.searchString;
+  // isShorts = allData.isShorts;
 } 
 
-const [moviesData, setMoviesData] = useState(movies);
-  
+const filtredLocalStorageMoviesData = localStorage.getItem('filteredMoviesData');
+if (filtredLocalStorageMoviesData !== null){
+  const filtredData = JSON.parse(filtredLocalStorageMoviesData);
+  setFilteredMoviesData(filtredData.moviesData);
+  // searchString = localData.searchString;
+  // isShorts = localData.isShorts;
+} 
 
+},[])
 
-
-
-
-  function handleSearch(inputValue, tumbOff) {
-  // function handleSubmit(e, keyWords, moviesShorts) {
-    // e.preventDefault();
+  function fetchAllMovies(inputValue, isShortsTumb ) {
     // console.log("clicked")
-    setIsLoading(true)
+    setIsLoading(true);
+    const searchValue = inputValue.toLowerCase();
+    setIsSearchedValue(searchValue);
 
-    MoviesApi.getMovies(inputValue, tumbOff)
+    MoviesApi.getMovies() //inputValue, tumbOff
     .then(res => {
       
       const moviesData = res.map((movie) => {
@@ -62,13 +67,30 @@ const [moviesData, setMoviesData] = useState(movies);
       {
         moviesData: moviesData,
         searchString: inputValue,
-        isShorts: tumbOff,
+        isShortsTumb: isShortsTumb,
        } ));
 
-      setMoviesData(moviesData)
-      setIsLoading(false)
-      
+      // setMoviesData(moviesData);
+// debugger;
+      let filteredMovies = moviesData.filter((movie) => {
+        return (movie.nameRU.toLowerCase().includes(searchValue))
+      });
+
+      setMoviesData(filteredMovies);
+
+      localStorage.setItem('filteredMoviesData', JSON.stringify(filteredMovies));
+
     })
+      .catch(() => {
+        setIsError('Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз');
+      })
+
+      .finally(() => {
+        setIsLoading(false);
+      })
+
+      localStorage.setItem('searchMoviesValue', inputValue);
+      localStorage.setItem('stateCheckboxMovies', isShortsTumb);
   }
 
 
@@ -77,18 +99,18 @@ const [moviesData, setMoviesData] = useState(movies);
     <>
       <HeaderAuth />
       <main className='movies'>
-        <SearchForm handleSearch={handleSearch}
-        searchString={searchString}
-        isShorts={isShorts}
+        <SearchForm fetchAllMovies={fetchAllMovies}
+        isSearchedValue={isSearchedValue}
+        isShorts={isShortsTumb}
         />
         {isLoading ? (
           <Preloader />
         ) : (
           <>
-            <MoviesCardList
-            movies={moviesData}
-            
-            />
+            <MoviesCardList movies={moviesData} />
+
+          <span className="movies__error">{isError}</span>
+
             <section className='more-cards'>
               <button type='button' className='more-cards__button'>
                 Ещё

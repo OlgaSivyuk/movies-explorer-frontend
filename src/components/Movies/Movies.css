@@ -32,6 +32,18 @@ width: 100%;
     color: #FFFFFF;
   }
 
+  .movies__error {
+    height: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 13px;
+    line-height: 16px;
+    color: #FF4062;
+    margin-top: 48px;
+    padding: 0;
+  }
+
   @media screen and (max-width: 768px) {
     .more-cards {
         padding: 50px 30px 80px;
