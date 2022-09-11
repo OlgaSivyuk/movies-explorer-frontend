@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import './SearchForm.css';
 
-function SearchForm({ errorMessage, handleSearch, searchStrings, isShorts}) {
+function SearchForm({ errorMessage, handleSearch, searchString, isShorts}) {
   // debugger;
   // проверка работы тумблера
   const [tumbOff, setTumbOff] = useState(isShorts);
-  const [inputValue, setInputValue] = useState(searchStrings)
+  const [inputValue, setInputValue] = useState(searchString)
   const [isValidInput, setIsValidInput] = useState(false);
 
   function handleTumbOff() {

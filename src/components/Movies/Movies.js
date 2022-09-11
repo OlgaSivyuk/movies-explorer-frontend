@@ -12,18 +12,21 @@ function Movies() {
 
   // проверка работы прелоадера
   const [isLoading, setIsLoading] = useState(false);
-  const [moviesData, setMoviesData] = useState([]);
   
-
+let movies = [];
 let searchString = '';
 let isShorts = false;
-const localData = localStorage.getItem('moviesData');
+const localDataString = localStorage.getItem('moviesData');
 
-if (localData !== null){
-  setMoviesData(localData.moviesData);
+if (localDataString !== null){
+  const localData = JSON.parse(localDataString);
+  movies = localData.moviesData;
   searchString = localData.searchString;
   isShorts = localData.isShorts;
 } 
+
+const [moviesData, setMoviesData] = useState(movies);
+  
 
 
 
@@ -55,11 +58,12 @@ if (localData !== null){
           nameEN: movie.nameEN ? movie.nameEN : 'unknown',
         }
       });
-      localStorage.setItem('moviesData', {
+      localStorage.setItem('moviesData', JSON.stringify(
+      {
         moviesData: moviesData,
         searchString: inputValue,
         isShorts: tumbOff,
-       } );
+       } ));
 
       setMoviesData(moviesData)
       setIsLoading(false)
@@ -68,7 +72,7 @@ if (localData !== null){
   }
 
 
-debugger;
+// debugger;
   return (
     <>
       <HeaderAuth />
