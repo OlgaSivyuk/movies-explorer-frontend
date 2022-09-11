@@ -9,13 +9,38 @@ import * as MoviesApi from "../../utils/MoviesApi.js";
 
 
 function Movies() {
+
   const [isLoading, setIsLoading] = useState(false);
   const [moviesData, setMoviesData] = useState([]);
   const [filteredMoviesData, setFilteredMoviesData] = useState([]);
   const [isError, setIsError] = useState(false);
   const [isShortsTumb, setIsShortsTumb] = useState(false);
+  const [maxMoviesAmount, setMaxMoviesAmount] = useState(0);
+  const [value, setValue] = useState(0);
 
   const [isSearchedValue, setIsSearchedValue] = useState(localStorage.getItem('searchMoviesValue'));
+
+  function changeTemplate() {
+    const width = window.innerWidth;
+  
+    if (width >= 1280) {
+      setMaxMoviesAmount(12);
+      setValue(3);
+    } else if (width >= 768) {
+      setMaxMoviesAmount(8);
+      setValue(2);
+    } else if (width >= 320) {
+      setMaxMoviesAmount(5);
+      setValue(2);
+    } else {
+      setMaxMoviesAmount(5);
+      setValue(2);
+    }
+  }
+  
+  useEffect(() => {
+    changeTemplate()
+  }) 
 
 useEffect(() => {
 const localStorageMoviesData = localStorage.getItem('moviesData');
@@ -31,8 +56,6 @@ const filtredLocalStorageMoviesData = localStorage.getItem('filteredMoviesData')
 if (filtredLocalStorageMoviesData !== null){
   const filtredData = JSON.parse(filtredLocalStorageMoviesData);
   setFilteredMoviesData(filtredData.moviesData);
-  // searchString = localData.searchString;
-  // isShorts = localData.isShorts;
 } 
 
 },[])
@@ -71,7 +94,7 @@ if (filtredLocalStorageMoviesData !== null){
        } ));
 
       // setMoviesData(moviesData);
-// debugger;
+     // debugger;
       let filteredMovies = moviesData.filter((movie) => {
         return (movie.nameRU.toLowerCase().includes(searchValue))
       });
@@ -94,6 +117,14 @@ if (filtredLocalStorageMoviesData !== null){
   }
 
 
+
+
+// function showMoreMovies() {
+//   console.log('clicked')
+//   setMaxMoviesAmount(maxMoviesAmount + value);
+// };
+
+
 // debugger;
   return (
     <>
@@ -111,11 +142,11 @@ if (filtredLocalStorageMoviesData !== null){
 
           <span className="movies__error">{isError}</span>
 
-            <section className='more-cards'>
-              <button type='button' className='more-cards__button'>
+            {/* <section className='more-cards'>
+              <button type='button' className='more-cards__button' onClick={showMoreMovies}>
                 Ещё
               </button>
-            </section>
+            </section> */}
           </>
         )}
       </main>
