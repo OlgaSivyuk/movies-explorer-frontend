@@ -15,7 +15,7 @@ function MoviesCard({image, nameRU, duration } ) {
   return (
     <>
       <li className='movie-card' >
-        <img className='movie__image' alt='Кадр из фильма' src={image} />
+        <img className='movie__image' alt={nameRU} src={`https://api.nomoreparties.co/${image.url}`} />
         <div className='movie__container'>
           <div className='movie__info'>
             <h3 className='movie__title'>{nameRU}</h3>

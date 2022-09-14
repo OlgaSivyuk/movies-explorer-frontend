@@ -9,10 +9,16 @@ function MoviesCardList({movies}) {
   const [maxMoviesAmount, setMaxMoviesAmount] = useState(0);
   const [amountValue, setValue] = useState(0);
 
-  function showMoreMovies() {
-    console.log('clicked')
-    setMaxMoviesAmount(maxMoviesAmount + amountValue);
-};
+  useEffect(() => {
+    changeTemplate();
+    
+    window.addEventListener('resize', () => {
+      setTimeout(() => {
+        changeTemplate();
+      }, 500);
+  });
+  },[])
+
 
 function changeTemplate() {
   const width = window.innerWidth;
@@ -32,11 +38,10 @@ function changeTemplate() {
   }
 }
 
-useEffect(() => {
-  changeTemplate()
-},[])
-
-
+function showMoreMovies() {
+  console.log('clicked')
+  setMaxMoviesAmount(maxMoviesAmount + amountValue);
+};
 
   // debugger;
   return (
