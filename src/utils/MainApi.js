@@ -1,5 +1,7 @@
 // export const BASE_URL = "https://api.movies-sivyuko.nomoredomains.xyz";
 export const BASE_URL = 'http://localhost:3001';
+export const SERVER_URL = 'https://api.nomoreparties.co'
+
 
 function checkResponse(res) {
   return res.ok 
@@ -70,43 +72,57 @@ export function register(name, email, password) {
     .then(checkResponse)
   };
 
-  export function addMovie({
-    country,
-    director,
-    duration,
-    year,
-    description,
-    image,
-    trailerLink,
-    nameRU,
-    nameEN,
-    thumbnail,
-    movieId,
-  }) {
+    export function addMovie(
+      movie
+      // country,
+      // director,
+      // duration,
+      // year,
+      // description,
+      // image,
+      // trailerLink,
+      // nameRU,
+      // nameEN,
+      // thumbnail,
+      // movieId,
+    ) {
     return fetch(`${BASE_URL}/movies`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       credentials: "include",
-      body: JSON.stringify({
-        country,
-        director,
-        duration,
-        year,
-        description,
-        image,
-        trailerLink,
-        nameRU,
-        nameEN,
-        thumbnail,
-        movieId,
-      }),
+      body: JSON.stringify(movie),
+      // body: JSON.stringify({
+      //   country: `${country}`,
+      //   director: `${director}`,
+      //   duration: duration * 1,
+      //   year: `${year}`,
+      //   description: `${description}`,
+      //   image: `${SERVER_URL}${image}`,
+      //   trailerLink: `${trailerLink}`,
+      //   nameRU: `${nameRU}`,
+      //   nameEN: `${nameEN}`,
+      //   thumbnail: `${SERVER_URL}${thumbnail}`,
+      //   movieId: +movieId,
+      // }),
     }).then(checkResponse);
   };
 
   export function getSavedMovies() {
     return fetch(`${BASE_URL}/movies`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      credentials: 'include',
+    })
+    .then(checkResponse)
+  };
+
+
+  export function getSavedMovieIds() {
+    return fetch(`${BASE_URL}/movies/getmovieids`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

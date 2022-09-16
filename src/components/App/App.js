@@ -16,6 +16,9 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
+
+
+  
   const [isOkMessage, setOkMessage] = useState({text: ""});
   const [isErrorMessage, setErrorMessage] = useState({text: ""});
 
@@ -25,6 +28,8 @@ function App() {
   useEffect(() => {
     handleCheckToken();
   }, []);
+
+ 
 
 
   function handleRegister({ name, email, password }) {
@@ -123,7 +128,6 @@ function App() {
       console.error(`Ошибка...: ${err}`));
   }
 
-
 // debugger;
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -145,7 +149,8 @@ function App() {
             path="/movies"
             element={
               <ProtectedRoute loggedIn={loggedIn}>
-                <Movies loggedIn={loggedIn}/>
+                <Movies
+                />
               </ProtectedRoute>
             }
           />
@@ -154,7 +159,8 @@ function App() {
             path="/saved-movies"
             element={
               <ProtectedRoute loggedIn={loggedIn}>
-                <SavedMovies loggedIn={loggedIn} />
+                <SavedMovies
+                  />
               </ProtectedRoute>
             }
           />

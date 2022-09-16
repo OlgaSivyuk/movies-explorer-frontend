@@ -4,7 +4,7 @@ import MoviesCard from '../MoviesCard/MoviesCard'
 // import movieImg from '../../../images/movie-img.svg';
 
 
-function MoviesCardList({movies}) {
+function MoviesCardList({movies, movieActionAdd, movieActionDelete, savedMovieIds}) {
 
   const [maxMoviesAmount, setMaxMoviesAmount] = useState(0);
   const [amountValue, setValue] = useState(0);
@@ -43,6 +43,12 @@ function showMoreMovies() {
   setMaxMoviesAmount(maxMoviesAmount + amountValue);
 };
 
+
+function shouldShowIconActive(movieId){
+// debugger;
+  return savedMovieIds.find((id) => id === movieId) !== undefined;
+}
+
   // debugger;
   return (
     <>
@@ -52,7 +58,13 @@ function showMoreMovies() {
              if (value < maxMoviesAmount) {
             return (
           <MoviesCard {...movie}
-          key={movie.id || movie.movieId || movie._id}/>
+          key={movie.id}
+          movie={movie}
+          // handleMovieAction={movieActionAdd }
+          movieActionAdd = {movieActionAdd}
+          movieActionDelete = {movieActionDelete}
+          showIconActive = {shouldShowIconActive(movie.id)}
+          />
           );
             }
             return null

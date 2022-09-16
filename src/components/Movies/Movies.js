@@ -6,12 +6,14 @@ import SearchForm from './SearchForm/SearchForm';
 import MoviesCardList from './MoviesCardList/MoviesCardList';
 import Footer from '../Footer/Footer';
 import * as MoviesApi from "../../utils/MoviesApi.js";
+import * as MainApi from "../../utils/MainApi.js";
 
-// debugger;
+
 function Movies() {
-
+// debugger;
   const [isLoading, setIsLoading] = useState(false);
   const [moviesData, setMoviesData] = useState([]);
+  const [savedMovieIds, setSavedMovieIds] = useState(null);
   const [filteredMoviesData, setFilteredMoviesData] = useState([]);
   const [isError, setIsError] = useState(false);
   // const [isShortsTumb, setIsShortsTumb] = useState(false);
@@ -27,8 +29,16 @@ function Movies() {
     if (localStorage.getItem('moviesData')) {
       setMoviesData(JSON.parse(localStorage.getItem('moviesData')));
     }
+
+    if (savedMovieIds === null){
+    MainApi.getSavedMovieIds()
+    .then((res) => {
+      setSavedMovieIds(res.data)
+    })
+  }
+
   }, []);
-  
+
   // debugger;
   function fetchAllMovies(inputValue){ //isShortsTumb
     setIsLoading(true);
@@ -39,15 +49,29 @@ function Movies() {
     if (moviesData.length === 0) {
       MoviesApi.getMovies()
         .then((res) => {
+          const mappedMovies = res.map((resMovie) => { return { 
+            country: resMovie.country ,
+            director: resMovie.director,
+            duration: resMovie.duration,
+            year: resMovie.year,
+            description: resMovie.description,
+            image: `https://api.nomoreparties.co${resMovie.image.url}`,
+            trailerLink: resMovie.trailerLink,
+            nameRU: resMovie.nameRU,
+            nameEN: resMovie.nameEN,
+            thumbnail: `https://api.nomoreparties.co${resMovie.image.formats.thumbnail.url}`,
+            id: resMovie.id,
+          }
+          })
+          
           console.log('formatedData', res);
-          localStorage.setItem('moviesData', JSON.stringify(res));
-          setMoviesData(res);
+          localStorage.setItem('moviesData', JSON.stringify(mappedMovies));
+          debugger;
+          setMoviesData(mappedMovies);
 
-          filteredMovies = res.filter((movie) => {
-            return (
-              movie.nameRU.toLowerCase().includes(searchValue)
+          filteredMovies = mappedMovies.filter((movie) => {
+            return movie.nameRU.toLowerCase().includes(searchValue)
               // movie.nameEN.toLowerCase().includes(searchValue)||
-              )
           });
 
           setFilteredMoviesData(filteredMovies);
@@ -84,12 +108,26 @@ function Movies() {
 
     if (moviesData.length === 0) {
       MoviesApi.getMovies()
-        .then((res) => {
-          console.log('formatedData', res);
-          localStorage.setItem('moviesData', JSON.stringify(res));
-          setMoviesData(res);
+        .then((res) => { 
+          const mappedMovies = res.map((resMovie) => { return { 
+            country: resMovie.country ,
+            director: resMovie.director,
+            duration: resMovie.duration,
+            year: resMovie.year,
+            description: resMovie.description,
+            image: `https://api.nomoreparties.co${resMovie.image.url}`,
+            trailerLink: resMovie.trailerLink,
+            nameRU: resMovie.nameRU,
+            nameEN: resMovie.nameEN,
+            thumbnail: `https://api.nomoreparties.co${resMovie.image.formats.thumbnail.url}`,
+            id: resMovie.id,
+          }
+          })
+          // console.log('formatedDataShort', res);
+          localStorage.setItem('moviesData', JSON.stringify(mappedMovies));
+          setMoviesData(mappedMovies);
 
-          filteredMovies = res.filter((movie) => {
+          filteredMovies = mappedMovies.filter((movie) => {
             return (
               movie.nameRU.toLowerCase().includes(searchValue) && 
               // movie.nameEN.toLowerCase().includes(searchValue) ||
@@ -122,7 +160,18 @@ function Movies() {
         localStorage.setItem('filteredMoviesData', JSON.stringify(filteredMovies));
       }, 500);
     }
-  }
+  };
+
+  function saveMovie(movie){
+debugger;
+    return MainApi.addMovie(movie)
+    .then((data) => {
+      console.log("res", data);
+        setSavedMovieIds([...savedMovieIds, movie.id]);
+    })
+    .catch((err) => 
+        console.error(`Ошибка...: ${err}`));
+    }
 
 // debugger;
   return (
@@ -137,9 +186,12 @@ function Movies() {
         />
         {isLoading ? <Preloader /> : null}
         
-        {!isLoading && !isError && filteredMoviesData.length !== 0 && (
+        {!isLoading && !isError && filteredMoviesData.length !== 0 && savedMovieIds !== null &&(
          <>
-            <MoviesCardList movies={filteredMoviesData} />
+            <MoviesCardList movies={filteredMoviesData} 
+            movieActionAdd={saveMovie}
+            savedMovieIds={savedMovieIds}
+            />
           </>
         )}
 
