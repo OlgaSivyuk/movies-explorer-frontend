@@ -7,26 +7,29 @@ import MoviesCardList from '../Movies/MoviesCardList/MoviesCardList';
 import Footer from '../Footer/Footer';
 import * as MainApi from "../../utils/MainApi.js";
 
-export function SavedMovies({ removeSavedMovieCallback }) {
+export function SavedMovies() {  //removeSavedMovieCallback
   // проверка работы прелоадера
   const [preloaderActive, setPreloaderActive] = useState(false);
-  const [savedMovies, setSavedMovies] = useState([]);
+  const [savedMovies, setSavedMovies] = useState(null);
   
 
   useEffect(() => {
-    if (savedMovies.length === 0) {
+    if (savedMovies === null) {
       MainApi.getSavedMovies()
         .then((savedMoviesList) => {
+          // debugger;
             // localStorage.setItem('savedMoviesData', JSON.stringify(savedMoviesList));
-            setSavedMovies(savedMoviesList);
+            setSavedMovies(savedMoviesList.data);
           })
         .catch((err) => console.log(`Ошибка...: ${err}`));
     }
-  }, [savedMovies.length]);
+  });
 
   function deletedMovie(movieId) {
+  
     return MainApi.deleteSavedMovie(movieId)
       .then(() => {
+        setPreloaderActive(false)
         const resultSavedMovie = savedMovies.filter((item) => item.id !== movieId);
 
         setSavedMovies(resultSavedMovie);
@@ -42,12 +45,13 @@ export function SavedMovies({ removeSavedMovieCallback }) {
       <SearchForm />
         {preloaderActive ? (<Preloader />) : (
         <>
+        {savedMovies !== null &&(
         <MoviesCardList
         movies={savedMovies}
         movieActionDelete={deletedMovie}
-        savedMovieIds={savedMovies.map((movie) => movie.id)}
-
+        savedMovieIds={savedMovies.map((movie) => { return movie.id })}
         />
+        )}
         </>
         )}
       </main>

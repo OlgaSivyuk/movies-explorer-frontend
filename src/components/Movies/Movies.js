@@ -37,7 +37,7 @@ function Movies() {
     })
   }
 
-  }, []);
+  }, [savedMovieIds]);
 
   // debugger;
   function fetchAllMovies(inputValue){ //isShortsTumb
@@ -66,7 +66,7 @@ function Movies() {
           
           console.log('formatedData', res);
           localStorage.setItem('moviesData', JSON.stringify(mappedMovies));
-          debugger;
+          // debugger;
           setMoviesData(mappedMovies);
 
           filteredMovies = mappedMovies.filter((movie) => {
@@ -163,15 +163,30 @@ function Movies() {
   };
 
   function saveMovie(movie){
-debugger;
+// debugger;
     return MainApi.addMovie(movie)
     .then((data) => {
-      console.log("res", data);
+      console.log("saveMovie", data);
         setSavedMovieIds([...savedMovieIds, movie.id]);
     })
     .catch((err) => 
         console.error(`Ошибка...: ${err}`));
     }
+
+    function deletedMovieByLike(movieId){
+      return MainApi.deleteSavedMovie(movieId)
+      .then((data) => {
+        console.log("deleteMovie", data);
+        // const deletedMovieInd = savedMovieIds.findIndex((item) => item.id === movieId);
+        //[...savedMovieIds.slice(0, deletedMovieInd), ...savedMovieIds.slice(deletedMovieInd + 1)]
+        const newArr = savedMovieIds.filter(item => item !== movieId)
+        setSavedMovieIds(newArr);
+        
+      })
+      .catch((err) => 
+      console.error(`Ошибка...: ${err}`));
+      }
+
 
 // debugger;
   return (
@@ -190,6 +205,7 @@ debugger;
          <>
             <MoviesCardList movies={filteredMoviesData} 
             movieActionAdd={saveMovie}
+            movieActionDeletedMovieByLike={deletedMovieByLike}
             savedMovieIds={savedMovieIds}
             />
           </>

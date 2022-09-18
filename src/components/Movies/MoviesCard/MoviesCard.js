@@ -1,24 +1,40 @@
 import React, { useState } from "react";
-import Movies from "../Movies";
+// import Movies from "../Movies";
 import "./MoviesCard.css";
 // import movieImg from '../../../images/movie-img.svg';
 
 function MoviesCard({
   movie,
   movieActionAdd,
+
   movieActionDelete,
-  showIconActive,
+
+  movieActionDeletedMovieByLike,
+
+  showIconActive
+
 }) {
   const [saved, setSaved] = useState(false);
 
-  function handleLike() {
-    movieActionAdd(movie).then(() => setSaved(!saved));
-  }
-
+// лайк поставлен
   function shouldShowLike(){
     return movieActionAdd !== undefined;
   }
 
+  function handleLikeClick() {
+    // debugger;
+    if(!showIconActive){
+    movieActionAdd(movie)
+      .then(() => 
+        setSaved(true));
+    } else {
+      movieActionDeletedMovieByLike(movie.id)
+      .then(() => 
+        setSaved(false));
+    }
+  }
+
+// лайк удален (и карточка удалена из сохраненных)
   function shouldShowDelete(){
     return movieActionDelete !== undefined;
   }
@@ -47,10 +63,12 @@ function MoviesCard({
               }`}
               aria-label="Нравится"
               type="button"
-              onClick={handleLike}
+              onClick={handleLikeClick}
             ></button>
             )
           }
+
+
           {shouldShowDelete() && (
             <button
               className="movie__button movie__button_type_delete"

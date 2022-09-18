@@ -1,9 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import './App.css';
-import { Routes, Route, useNavigate } from 'react-router-dom';
+import { Routes, Route, useNavigate, Navigate } from 'react-router-dom';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import * as MainApi from "../../utils/MainApi.js";
-import * as MoviesApi from "../../utils/MoviesApi.js";
+// import * as MoviesApi from "../../utils/MoviesApi.js";
 import Main from '../Main/Main';
 import Register from '../Register/Register';
 import Login from '../Login/Login';
@@ -22,15 +22,12 @@ function App() {
   const [isOkMessage, setOkMessage] = useState({text: ""});
   const [isErrorMessage, setErrorMessage] = useState({text: ""});
 
-
+  // const location = useLocation();
   const navigate = useNavigate();
 
   useEffect(() => {
     handleCheckToken();
   }, []);
-
- 
-
 
   function handleRegister({ name, email, password }) {
     return MainApi.register(name, email, password)
@@ -81,7 +78,7 @@ function App() {
       return MainApi.getUser()
         .then((res) => {
           const { _id, email, name } = res.data;
-          setLoggedIn(true);
+          setLoggedIn(true)
           setCurrentUser({ _id, email, name});
         })
         .catch((err) => {
@@ -177,6 +174,7 @@ function App() {
             }
           />
           <Route exact path="*" element={<PageNotFound />} />
+          <Route element={<Navigate to='/*'/>} />
         </Routes>
       </div>
     </CurrentUserContext.Provider>

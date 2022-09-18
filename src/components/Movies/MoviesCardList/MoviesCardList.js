@@ -4,7 +4,7 @@ import MoviesCard from '../MoviesCard/MoviesCard'
 // import movieImg from '../../../images/movie-img.svg';
 
 
-function MoviesCardList({movies, movieActionAdd, movieActionDelete, savedMovieIds}) {
+function MoviesCardList({movies, movieActionAdd, movieActionDelete, savedMovieIds, movieActionDeletedMovieByLike}) {
 
   const [maxMoviesAmount, setMaxMoviesAmount] = useState(0);
   const [amountValue, setValue] = useState(0);
@@ -44,10 +44,11 @@ function showMoreMovies() {
 };
 
 
-function shouldShowIconActive(movieId){
-// debugger;
+function shouldShowIconActive(movieId){ // вот здесь нужно поменять, что бы лайк и дизлайк работал
+// debugger; 
   return savedMovieIds.find((id) => id === movieId) !== undefined;
 }
+
 
   // debugger;
   return (
@@ -60,9 +61,12 @@ function shouldShowIconActive(movieId){
           <MoviesCard {...movie}
           key={movie.id}
           movie={movie}
-          // handleMovieAction={movieActionAdd }
           movieActionAdd = {movieActionAdd}
+          
           movieActionDelete = {movieActionDelete}
+
+          movieActionDeletedMovieByLike = {movieActionDeletedMovieByLike}
+
           showIconActive = {shouldShowIconActive(movie.id)}
           />
           );
