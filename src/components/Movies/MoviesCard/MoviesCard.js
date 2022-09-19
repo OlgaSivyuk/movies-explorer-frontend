@@ -46,11 +46,13 @@ function MoviesCard({
   return (
     <>
       <li className="movie-card">
+        <a className="movie__trailer-link" target='_blank' rel='noreferrer' href={movie.trailerLink}>
         <img
           className="movie__image"
           alt={movie.nameRU}
           src={movie.image}
         />
+        </a>
         <div className="movie__container">
           <div className="movie__info">
             <h3 className="movie__title">{movie.nameRU}</h3>
