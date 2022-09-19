@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './SearchForm.css';
 
-function SearchForm({ onSearch, onShortsSearch}) {
+function SearchForm({ onSearch, onShortsSearch, isSavedMovies, onSearchSavedMovies, onShortsSearchSearchMovies}) {
   // debugger;
   // проверка работы тумблера
   const [inputValue, setInputValue] = useState('')
@@ -12,7 +12,7 @@ function SearchForm({ onSearch, onShortsSearch}) {
 useEffect(() => {
 
  const localStorageTumbState = localStorage.getItem('shortsTumbOn');
- if (localStorageTumbState === null) {
+ if (localStorageTumbState === null) { // !isSavedMovies && 
      localStorage.setItem('shortsTumbOn', JSON.stringify(false));
  }
  const localStorageTumbStateParsed = JSON.parse(localStorageTumbState);
@@ -34,9 +34,18 @@ useEffect(() => {
     }
 }
 
+// function handleTumbOn() {
+//   setTumbOn(true);
+//   localStorage.setItem('shortsTumbOn', true);
+
+//   if (!isSavedMovies) {
+//     onShortsSearch(inputValue);
+//   } else {
+//     onShortsSearchSearchMovies(inputValue)
+//   }
+// }
+
 function handleTumbOff() {
-
-
   setTumbOn(false);
   localStorage.setItem('shortsTumbOn', false);
 
@@ -44,6 +53,17 @@ function handleTumbOff() {
        onSearch(inputValue);
     }
 }
+
+// function handleTumbOff() {
+// setTumbOn(false);
+// localStorage.setItem('shortsTumbOn', false);
+
+//   if (!isSavedMovies) {
+//      onSearch(inputValue);
+//   } else {
+//     onSearchSavedMovies(inputValue)
+//   }
+// }
 
 
   const handleInput = (e) => {
@@ -80,12 +100,29 @@ function handleTumbOff() {
   // onShortsSearch(inputValue, tumbOn);
 }
 
+
+function handleSubmitSavedMovies(evt){
+  evt.preventDefault();
+    console.log("clicked saved movies")
+    checkInput();
+    
+   if (tumbOn && inputValue !== '') {
+      setIsError('');
+      onShortsSearchSearchMovies(inputValue, tumbOn );
+  } else if (inputValue !== '') {
+    setIsError('');
+      onSearchSavedMovies(inputValue);
+  } else {
+    setIsError('Нужно ввести ключевое слово')
+  }
+}
+
   return (
     <section className='search'>
       {isError && (
-      <span className="movies__error">{isError}</span>
+      <span className="search__error-message">{isError}</span>
     )}
-      <form className='search-movie' onSubmit={handleSubmit}>
+      <form className='search-movie' onSubmit={!isSavedMovies ? handleSubmit : handleSubmitSavedMovies}>
         <input
           className='search-movie__input'
           type='text'

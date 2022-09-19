@@ -117,7 +117,9 @@
   background-image: url('../../../images/smalltumboff.svg');
 }
 
-.search-movie__error-message {
+.search__error-message {
+  position: absolute;
+  top: 140px;
   height: 16px;
   display: flex;
   justify-content: center;
@@ -125,7 +127,7 @@
   font-size: 13px;
   line-height: 16px;
   color: #FF4062;
-  margin-top: 48px;
+  margin: 0 0 0 20px;
   padding: 0;
 }
 
@@ -164,6 +166,11 @@
     align-items: center;
     justify-content: center;
     margin: 37px 0 0 0;
+  }
+
+  .search__error-message {
+    top: 120px;
+    margin: 0 0 0 18px;
   }
 }
 

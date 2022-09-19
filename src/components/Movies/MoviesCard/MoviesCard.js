@@ -26,11 +26,11 @@ function MoviesCard({
     if(!showIconActive){
     movieActionAdd(movie)
       .then(() => 
-        setSaved(true));
+        setSaved(!saved));  //true
     } else {
       movieActionDeletedMovieByLike(movie.id)
       .then(() => 
-        setSaved(false));
+        setSaved(!saved)); //false
     }
   }
 

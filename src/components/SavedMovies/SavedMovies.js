@@ -9,27 +9,90 @@ import * as MainApi from "../../utils/MainApi.js";
 
 export function SavedMovies() {  //removeSavedMovieCallback
   // проверка работы прелоадера
-  const [preloaderActive, setPreloaderActive] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  // const [preloaderActive, setPreloaderActive] = useState(false);
   const [savedMovies, setSavedMovies] = useState(null);
+  const [filteredSavedMovies, setFilteredSavedMovies] = useState([]);
+  const [isSearchedValue, setIsSearchedValue] = useState(localStorage.getItem('searchMoviesValue'));
+  const [isError, setIsError] = useState(false);
   
 
   useEffect(() => {
+    
+    // if (localStorage.getItem('filteredSavedMovies')) {
+    //   setFilteredSavedMovies(JSON.parse(localStorage.getItem('filteredSavedMovies')));
+    // }
+
+    // if (localStorage.getItem('savedMovies')) {
+    //   setSavedMovies(JSON.parse(localStorage.getItem('savedMovies')));
+    // }
+
     if (savedMovies === null) {
-      MainApi.getSavedMovies()
-        .then((savedMoviesList) => {
-          // debugger;
-            // localStorage.setItem('savedMoviesData', JSON.stringify(savedMoviesList));
-            setSavedMovies(savedMoviesList.data);
-          })
-        .catch((err) => console.log(`Ошибка...: ${err}`));
-    }
-  });
+          MainApi.getSavedMovies()
+            .then((savedMoviesList) => {
+              // debugger;
+                // localStorage.setItem('savedMoviesData', JSON.stringify(savedMoviesList));
+                setSavedMovies(savedMoviesList.data);
+              })
+              .catch(() => {
+                setIsError(true);
+              })
+        }
+  },[]);  
+
+
+
+  function fetchAllSavedMovies(inputValue){ //isShortsTumb
+    setIsLoading(true);
+    const searchValue = inputValue.toLowerCase();
+    // let filteredMovies;
+    setIsSearchedValue(searchValue);
+
+      setTimeout(() => {
+        const filteredMovies = savedMovies.filter((movie) => {
+          return (
+            movie.nameRU.toLowerCase().includes(searchValue)
+            // movie.nameEN.toLowerCase().includes(searchValue) ||
+          )
+        });
+
+        setIsLoading(false);
+        setFilteredSavedMovies(filteredMovies);
+        // localStorage.setItem('filteredSavedMovies', JSON.stringify(filteredMovies));
+      }, 500);
+    };
+
+  function fetchShortsSavedMovies(inputValue) { //isShortsTumb
+    setIsLoading(true);
+    const searchValue = inputValue.toLowerCase();
+    // let filteredMovies;
+    setIsSearchedValue(searchValue);
+
+    
+      setTimeout(() => {
+        const filteredShortMovies = savedMovies.filter((movie) => {
+          return (
+            movie.nameRU.toLowerCase().includes(searchValue)&&
+            // movie.nameEN.toLowerCase().includes(searchValue) ||
+            movie.duration < 40
+          )
+        });
+
+        setIsLoading(false);
+        setFilteredSavedMovies(filteredShortMovies);
+        // localStorage.setItem('filteredSavedMovies', JSON.stringify(filteredShortMovies));
+      }, 500);
+    
+  };
+
+
+
 
   function deletedMovie(movieId) {
   
     return MainApi.deleteSavedMovie(movieId)
       .then(() => {
-        setPreloaderActive(false)
+        setIsLoading(false)
         const resultSavedMovie = savedMovies.filter((item) => item.id !== movieId);
 
         setSavedMovies(resultSavedMovie);
@@ -42,8 +105,12 @@ export function SavedMovies() {  //removeSavedMovieCallback
     <>
       <HeaderAuth />
       <main className='saved-movies'>
-      <SearchForm />
-        {preloaderActive ? (<Preloader />) : (
+      <SearchForm 
+           onSearchSavedMovies={fetchAllSavedMovies}
+           onShortsSearchSearchMovies={fetchShortsSavedMovies}
+           isSavedMovies={true}/>
+        {isLoading ? <Preloader /> : null}
+        {!isLoading && !isError &&(
         <>
         {savedMovies !== null &&(
         <MoviesCardList
@@ -53,6 +120,12 @@ export function SavedMovies() {  //removeSavedMovieCallback
         />
         )}
         </>
+        )}
+
+        {isError && (<span className="movies__error">Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз</span>)}
+        
+        {!isLoading && !isError && savedMovies !== null && filteredSavedMovies.length === 0 && isSearchedValue && (
+          <span className="movies__error">Ничего не найдено</span>
         )}
       </main>
       <Footer />

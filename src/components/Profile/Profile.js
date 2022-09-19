@@ -2,7 +2,7 @@ import React, {useContext, useState, useEffect} from 'react';
 import './Profile.css';
 import HeaderAuth from '../HeaderAuth/HeaderAuth';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
-// import { Link } from 'react-router-dom';
+
 
 function Profile({ handleSignOut, onUpdateUser, statusProfile }) {
   const currentUser = useContext(CurrentUserContext);
