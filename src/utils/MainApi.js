@@ -1,5 +1,5 @@
-// export const BASE_URL = "https://api.movies-sivyuko.nomoredomains.xyz";
-export const BASE_URL = 'http://localhost:3001';
+export const BASE_URL = "https://api.movies-sivyuko.nomoredomains.xyz";
+// export const BASE_URL = 'http://localhost:3001';
 export const SERVER_URL = 'https://api.nomoreparties.co'
 
 
@@ -74,17 +74,6 @@ export function register(name, email, password) {
 
     export function addMovie(
       movie
-      // country,
-      // director,
-      // duration,
-      // year,
-      // description,
-      // image,
-      // trailerLink,
-      // nameRU,
-      // nameEN,
-      // thumbnail,
-      // movieId,
     ) {
     return fetch(`${BASE_URL}/movies`, {
       method: "POST",
@@ -93,19 +82,6 @@ export function register(name, email, password) {
       },
       credentials: "include",
       body: JSON.stringify(movie),
-      // body: JSON.stringify({
-      //   country: `${country}`,
-      //   director: `${director}`,
-      //   duration: duration * 1,
-      //   year: `${year}`,
-      //   description: `${description}`,
-      //   image: `${SERVER_URL}${image}`,
-      //   trailerLink: `${trailerLink}`,
-      //   nameRU: `${nameRU}`,
-      //   nameEN: `${nameEN}`,
-      //   thumbnail: `${SERVER_URL}${thumbnail}`,
-      //   movieId: +movieId,
-      // }),
     }).then(checkResponse);
   };
 
@@ -142,5 +118,3 @@ export function register(name, email, password) {
     })
     .then(checkResponse)
   };
-
-
