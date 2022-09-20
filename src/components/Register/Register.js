@@ -51,11 +51,11 @@ function onSubmit(data) {
                 message: 'Имя не должно содержать более 30 символов',
               },
             })}
-            className={`register__form-input ${errors?.password ? 'register__form-input_error' : ''}`}
+            className={`register__form-input ${errors?.name ? 'register__form-input_error' : ''}`}
             type='text'
             placeholder=' '>
           </input>
-          { errors?.name && <span className='login__error' type='text'>{errors?.name?.message}</span> }
+          { errors?.name && <span className='register__error' type='text'>{errors?.name?.message}</span> }
         </fieldset>
         <fieldset className='register__form-fields'>
           <label className='register__form-title'>E-mail</label>
@@ -71,7 +71,7 @@ function onSubmit(data) {
             type='email'
             placeholder=' '>
           </input>
-          { errors?.email && <span className='login__error' type='text'>{errors?.email?.message}</span> }
+          { errors?.email && <span className='register__error' type='text'>{errors?.email?.message}</span> }
         </fieldset>
         <fieldset className='register__form-fields'>
           <div className='register__form-title'>Пароль</div>
@@ -87,7 +87,7 @@ function onSubmit(data) {
             type='password'
             placeholder=' '>
           </input>
-          { errors?.password && <span className='login__error' type='text'>{errors?.password?.message}</span> }
+          { errors?.password && <span className='register__error' type='text'>{errors?.password?.message}</span> }
         </fieldset>
         <span className="register__error-message">{errorMessage}</span>
         <button 
