@@ -7,7 +7,7 @@ import logo from '../../images/logo.svg';
 function Register({ handleRegister, errorMessage }) {
   const {
     register,
-    formState: { errors, isValid, },
+    formState: { errors, isValid },
     handleSubmit,
     // reset,
   } = useForm({
@@ -16,18 +16,22 @@ function Register({ handleRegister, errorMessage }) {
       name: '',
       email: '',
       password: '',
-    }
+    },
   });
 
-function onSubmit(data) {
-  handleRegister(data);
-  // reset()
-}
+  function onSubmit(data) {
+    handleRegister(data);
+    // reset()
+  }
 
   return (
     <section className='register'>
       <Link to='/' className='register__logo'>
-        <img alt='лого в виде бублика' className='register__logo-img' src={logo} />
+        <img
+          alt='лого в виде бублика'
+          className='register__logo-img'
+          src={logo}
+        />
       </Link>
       <h2 className='register__title register__title-text'>
         Добро пожаловать!
@@ -40,7 +44,8 @@ function onSubmit(data) {
               required: 'Поле «Имя» не может быть пустым',
               pattern: {
                 value: /[A-Za-zА-Яа-я-\s]+$/,
-                message: 'Поле «Имя» должно содержать только буквы латиницы, кириллицы, пробел или дефис',
+                message:
+                  'Поле «Имя» должно содержать только буквы латиницы, кириллицы, пробел или дефис',
               },
               minLength: {
                 value: 2,
@@ -51,11 +56,17 @@ function onSubmit(data) {
                 message: 'Имя не должно содержать более 30 символов',
               },
             })}
-            className={`register__form-input ${errors?.name ? 'register__form-input_error' : ''}`}
+            className={`register__form-input ${
+              errors?.name ? 'register__form-input_error' : ''
+            }`}
             type='text'
-            placeholder=' '>
-          </input>
-          { errors?.name && <span className='register__error' type='text'>{errors?.name?.message}</span> }
+            placeholder=' '
+          ></input>
+          {errors?.name && (
+            <span className='register__error' type='text'>
+              {errors?.name?.message}
+            </span>
+          )}
         </fieldset>
         <fieldset className='register__form-fields'>
           <label className='register__form-title'>E-mail</label>
@@ -67,11 +78,17 @@ function onSubmit(data) {
                 message: 'Введен некорректный адрес электронной почты',
               },
             })}
-            className={`login__form-input ${errors?.email ? 'login__form-input_error' : ''}`}
+            className={`login__form-input ${
+              errors?.email ? 'login__form-input_error' : ''
+            }`}
             type='email'
-            placeholder=' '>
-          </input>
-          { errors?.email && <span className='register__error' type='text'>{errors?.email?.message}</span> }
+            placeholder=' '
+          ></input>
+          {errors?.email && (
+            <span className='register__error' type='text'>
+              {errors?.email?.message}
+            </span>
+          )}
         </fieldset>
         <fieldset className='register__form-fields'>
           <div className='register__form-title'>Пароль</div>
@@ -83,21 +100,30 @@ function onSubmit(data) {
                 message: 'Пароль должен содержать минимум 8 символов',
               },
             })}
-            className={`login__form-input ${errors?.password ? 'login__form-input_error' : ''}`}
+            className={`login__form-input ${
+              errors?.password ? 'login__form-input_error' : ''
+            }`}
             type='password'
-            placeholder=' '>
-          </input>
-          { errors?.password && <span className='register__error' type='text'>{errors?.password?.message}</span> }
+            placeholder=' '
+          ></input>
+          {errors?.password && (
+            <span className='register__error' type='text'>
+              {errors?.password?.message}
+            </span>
+          )}
         </fieldset>
-        <span className="register__error-message">{errorMessage}</span>
-        <button 
-        className={`register__submit_button ${!isValid ? 'register__submit_button_disabled' : ''}`}
-        disabled={!isValid} 
-        type='submit'>
+        <span className='register__error-message'>{errorMessage}</span>
+        <button
+          className={`register__submit_button ${
+            !isValid ? 'register__submit_button_disabled' : ''
+          }`}
+          disabled={!isValid}
+          type='submit'
+        >
           Зарегистрироваться
         </button>
       </form>
-      
+
       <div className='register__text'>
         <p className='register__signin'>
           Уже зарегистрированы?{' '}

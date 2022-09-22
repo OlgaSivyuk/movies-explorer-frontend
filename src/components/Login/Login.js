@@ -6,10 +6,9 @@ import logo from '../../images/logo.svg';
 
 
 function Login({ handleLogin, errorMessage }) {
-
   const {
     register,
-    formState: { errors, isValid, },
+    formState: { errors, isValid },
     handleSubmit,
     reset,
   } = useForm({
@@ -17,13 +16,13 @@ function Login({ handleLogin, errorMessage }) {
     defaultValues: {
       email: '',
       password: '',
-    }
+    },
   });
 
-function onSubmit(data) {
-  handleLogin(data);
-  reset();
-}
+  function onSubmit(data) {
+    handleLogin(data);
+    reset();
+  }
 
   return (
     <section className='login'>
@@ -42,12 +41,17 @@ function onSubmit(data) {
                 message: 'Введен некорректный адрес электронной почты',
               },
             })}
-            className={`login__form-input ${errors?.email ? 'login__form-input_error' : ''}`}
+            className={`login__form-input ${
+              errors?.email ? 'login__form-input_error' : ''
+            }`}
             type='email'
-            placeholder=' ' 
-            >
-          </input>
-          { errors?.email && <span className='login__error' type='text'>{errors?.email?.message}</span> }
+            placeholder=' '
+          ></input>
+          {errors?.email && (
+            <span className='login__error' type='text'>
+              {errors?.email?.message}
+            </span>
+          )}
         </fieldset>
         <fieldset className='login__form-fields'>
           <label className='login__form-title'>Пароль</label>
@@ -59,23 +63,30 @@ function onSubmit(data) {
                 message: 'Пароль должен содержать минимум 8 символов',
               },
             })}
-            className={`login__form-input ${errors?.password ? 'login__form-input_error' : ''}`}
+            className={`login__form-input ${
+              errors?.password ? 'login__form-input_error' : ''
+            }`}
             type='password'
             placeholder=' '
-          >
-          </input>
-          { errors?.password && <span className='login__error' type='text'>{errors?.password?.message}</span> }
+          ></input>
+          {errors?.password && (
+            <span className='login__error' type='text'>
+              {errors?.password?.message}
+            </span>
+          )}
         </fieldset>
-        <span className="login__error-message">{errorMessage}</span>
-        <button 
-        className={`login__submit_button ${!isValid ? 'login__submit_button_disabled' : ''}`}
-            disabled={!isValid}
-        type='submit'
+        <span className='login__error-message'>{errorMessage}</span>
+        <button
+          className={`login__submit_button ${
+            !isValid ? 'login__submit_button_disabled' : ''
+          }`}
+          disabled={!isValid}
+          type='submit'
         >
-        Войти
+          Войти
         </button>
       </form>
-      
+
       <div className='login__text'>
         <p className='login__signin'>
           Еще не зарегистрированы?{' '}

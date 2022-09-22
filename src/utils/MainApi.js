@@ -1,6 +1,7 @@
-export const BASE_URL = "https://api.movies-sivyuko.nomoredomains.xyz";
-// export const BASE_URL = 'http://localhost:3001';
+export const BASE_URL = 'https://api.movies-sivyuko.nomoredomains.xyz';
 export const SERVER_URL = 'https://api.nomoreparties.co'
+
+// export const BASE_URL = 'http://localhost:3001';
 
 
 function checkResponse(res) {
@@ -76,11 +77,11 @@ export function register(name, email, password) {
       movie
     ) {
     return fetch(`${BASE_URL}/movies`, {
-      method: "POST",
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
-      credentials: "include",
+      credentials: 'include',
       body: JSON.stringify(movie),
     }).then(checkResponse);
   };

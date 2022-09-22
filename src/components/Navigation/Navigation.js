@@ -3,7 +3,6 @@ import './Navigation.css';
 import { Link, NavLink, useLocation } from 'react-router-dom'
 
 function Navigation(props) {
-
   const location = useLocation();
 
   function handleCloseMenu() {
@@ -20,13 +19,30 @@ function Navigation(props) {
           ></button>
         </div>
         <div className='navigation__links'>
-          <NavLink to='/' className={`navigation__link ${ location.pathname === '/' ? 'navigation__link_active' : ''}`} >
+          <NavLink
+            to='/'
+            className={`navigation__link ${
+              location.pathname === '/' ? 'navigation__link_active' : ''
+            }`}
+          >
             Главная
           </NavLink>
-          <NavLink to='/movies' className={`navigation__link ${ location.pathname === '/movies' ? 'navigation__link_active' : ''}`}>
+          <NavLink
+            to='/movies'
+            className={`navigation__link ${
+              location.pathname === '/movies' ? 'navigation__link_active' : ''
+            }`}
+          >
             Фильмы
           </NavLink>
-          <NavLink to='/saved-movies' className={`navigation__link ${ location.pathname === '/saved-movies' ? 'navigation__link_active' : ''}`}>
+          <NavLink
+            to='/saved-movies'
+            className={`navigation__link ${
+              location.pathname === '/saved-movies'
+                ? 'navigation__link_active'
+                : ''
+            }`}
+          >
             Сохранённые фильмы
           </NavLink>
         </div>

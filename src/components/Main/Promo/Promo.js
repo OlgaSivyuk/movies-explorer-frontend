@@ -2,12 +2,6 @@ import './Promo.css';
 import mainImage from '../../../images/main-img.svg';
 
 function Promo() {
-  // {aboutProjectRef}
-  // function scrollToProject() {
-  //   aboutProjectRef.current.scrollIntoView({
-  //     behavior: 'smooth'
-  //   })
-  // }
 
   return (
     <section className='promo'>
@@ -21,7 +15,6 @@ function Promo() {
         <a className='promo__button' href='#about'>
           Узнать больше
         </a>
-        {/* <button className='promo__button' type='button' onMouseDown={scrollToProject}>Узнать больше</button> */}
       </div>
       <img
         className='promo__image'

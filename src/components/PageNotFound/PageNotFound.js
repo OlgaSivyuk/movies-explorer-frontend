@@ -2,7 +2,6 @@ import './PageNotFound.css';
 import {useNavigate } from 'react-router-dom';
 
 function PageNotFound() {
-
   const navigate = useNavigate();
 
   function handleClick(event) {
