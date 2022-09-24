@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './Register.css';
 import logo from '../../images/logo.svg';
 
@@ -18,6 +18,14 @@ function Register({ handleRegister, errorMessage }) {
       password: '',
     },
   });
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (localStorage.getItem('email')) {
+      navigate('/');
+    }
+  })
 
   function onSubmit(data) {
     handleRegister(data);

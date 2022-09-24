@@ -65,8 +65,13 @@ export function SavedMovies() {
         const resultSavedMovie = savedMovies.filter(
           (item) => item.id !== movieId
         );
-
         setSavedMovies(resultSavedMovie);
+
+        const resultFilteredSavedMovies = filteredSavedMovies.filter(
+          (item) => item.id !== movieId
+        );
+        setFilteredSavedMovies(resultFilteredSavedMovies);
+      
         // localStorage.setItem('savedMoviesData', JSON.stringify(resultSavedMovie));
       })
       .catch((err) => console.log(`Ошибка...: ${err}`));

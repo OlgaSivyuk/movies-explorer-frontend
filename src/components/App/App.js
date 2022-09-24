@@ -23,7 +23,10 @@ function App() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    handleCheckToken();
+    handleCheckToken()
+    .catch((err) => {
+      
+    });
   }, []);
 
   function handleRegister({ name, email, password }) {
@@ -78,12 +81,15 @@ function App() {
           setCurrentUser({ _id, email, name });
         })
         .catch((err) => {
+          if (err.includes('401')){
+            localStorage.removeItem('email');
+          }
           console.log(`Ошибка...: ${err}`);
         });
     } else {
       setLoggedIn(false);
       setCurrentUser({});
-      // return Promise.reject();
+      return Promise.reject();
     }
   }
 

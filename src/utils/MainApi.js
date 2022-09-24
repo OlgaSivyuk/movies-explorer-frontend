@@ -1,7 +1,7 @@
-export const BASE_URL = 'https://api.movies-sivyuko.nomoredomains.xyz';
+// export const BASE_URL = 'https://api.movies-sivyuko.nomoredomains.xyz';
 export const SERVER_URL = 'https://api.nomoreparties.co'
 
-// export const BASE_URL = 'http://localhost:3001';
+export const BASE_URL = 'http://localhost:3001';
 
 
 function checkResponse(res) {

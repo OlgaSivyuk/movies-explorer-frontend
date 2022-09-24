@@ -50,24 +50,29 @@ function SearchForm({ onSearch }) {
     setIsError('');
   };
 
-  function checkInput(e) {
-    if (inputValue === '') {
+  function checkInput() {
+    if (inputValue === '' || inputValue === null) {
       setIsError('Нужно ввести ключевое слово');
+      return false;
     } else {
       setIsError('');
+      return true;
     }
   }
 
   function handleSubmit(evt) {
     evt.preventDefault();
-    console.log('clicked');
-    checkInput();
-    if (inputValue === '') {
-      setIsError('Нужно ввести ключевое слово');
-    } else {
-      setIsError('');
+    console.log('clicked');  
+    
+    if (checkInput()){
       onSearch(inputValue, tumbOn);
-    }
+    };
+    // if (inputValue === '') {
+    //   setIsError('Нужно ввести ключевое слово');
+    // } else {
+    //   setIsError('');
+    //   onSearch(inputValue, tumbOn);
+    // }
   }
 
   return (
