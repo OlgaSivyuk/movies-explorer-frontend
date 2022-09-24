@@ -38,6 +38,8 @@ function Profile({ handleSignOut, onUpdateUser, statusProfile }) {
       clearErrors('name');
       clearErrors('email');
       return true;
+    } else {
+      return 'Вы ничего не поменяли, введите новое значение'; //false;
     }
   }
 
@@ -128,10 +130,9 @@ function Profile({ handleSignOut, onUpdateUser, statusProfile }) {
           <div className='profile__links'>
             <button
               disabled={activeButton && isValid ? false : true}
-              className={
-                activeButton && isValid
-                  ? 'profile__change_button profile__change_button_active'
-                  : 'profile__change_button'
+              className={activeButton && isValid
+                ? 'profile__change_button profile__change_button_active'
+                : 'profile__change_button'
               }
               type='submit'
             >
