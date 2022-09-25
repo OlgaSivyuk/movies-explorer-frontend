@@ -81,7 +81,10 @@ export function SavedMovies() {
     <>
       <HeaderAuth />
       <main className='saved-movies'>
-        <SearchForm onSearch={filterAllSavedMovies} />
+        <SearchForm 
+        onSearch={filterAllSavedMovies}
+        // isSavedMovies={true}
+         />
         {isLoading ? <Preloader /> : null}
         {!isLoading && !isError && (
           <>

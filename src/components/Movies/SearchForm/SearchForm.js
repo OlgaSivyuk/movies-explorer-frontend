@@ -1,34 +1,39 @@
 import React, { useEffect, useState } from 'react';
 import './SearchForm.css';
+import { useLocation } from "react-router-dom";
 
 function SearchForm({ onSearch }) {
   const [inputValue, setInputValue] = useState('');
   const [tumbOn, setTumbOn] = useState(false);
   const [isError, setIsError] = useState('');
+  const location = useLocation();
   // const [isInit, setIsInit] = useState(false);
 
-
   useEffect(() => {
-    const localStorageTumbState = localStorage.getItem('shortsTumbOn');
-    if (localStorageTumbState === null) {
-      localStorage.setItem('shortsTumbOn', JSON.stringify(false));
-    }
-    const localStorageTumbStateParsed = JSON.parse(localStorageTumbState);
-    setTumbOn(localStorageTumbStateParsed);
+    if (location.pathname === '/movies') {
+      const localStorageTumbState = localStorage.getItem('shortsTumbOn');
 
-    const searchItemFromStorage = localStorage.getItem('searchValue');
-    setInputValue(searchItemFromStorage);
+      if (localStorageTumbState === null) {
+        localStorage.setItem('shortsTumbOn', JSON.stringify(false));
+      }
+      const localStorageTumbStateParsed = JSON.parse(localStorageTumbState);
+      setTumbOn(localStorageTumbStateParsed);
 
+      const searchItemFromStorage = localStorage.getItem('searchValue');
+      setInputValue(searchItemFromStorage);
+    } 
     //  if (!isInit){ // если заходим первый раз то ищет фильмы автоматически
     //   onSearch(inputValue, tumbOn);
     //   setIsInit(true);
     //  }
-  }, [onSearch, inputValue, tumbOn]);
+  }, [location.pathname]); //onSearch, inputValue, tumbOn
 
-  function handleTumbOn() { // debugger;
+  function handleTumbOn() {
+    // debugger;
     setTumbOn(true);
+    if (location.pathname === '/movies'){
     localStorage.setItem('shortsTumbOn', true);
-
+    }
     if (inputValue !== '') {
       onSearch(inputValue, true); // tumbOn = true
     }
@@ -36,8 +41,9 @@ function SearchForm({ onSearch }) {
 
   function handleTumbOff() {
     setTumbOn(false);
+    if (location.pathname === '/movies'){
     localStorage.setItem('shortsTumbOn', false);
-
+    }
     if (inputValue !== '') {
       onSearch(inputValue, false); // tumbOn = false
     }
@@ -45,8 +51,9 @@ function SearchForm({ onSearch }) {
 
   const handleInput = (e) => {
     setInputValue(e.target.value);
-
+    if (location.pathname === '/movies'){
     localStorage.setItem('searchValue', e.target.value);
+    }
     setIsError('');
   };
 
@@ -62,17 +69,11 @@ function SearchForm({ onSearch }) {
 
   function handleSubmit(evt) {
     evt.preventDefault();
-    console.log('clicked');  
-    
-    if (checkInput()){
+    console.log('clicked');
+
+    if (checkInput()) {
       onSearch(inputValue, tumbOn);
-    };
-    // if (inputValue === '') {
-    //   setIsError('Нужно ввести ключевое слово');
-    // } else {
-    //   setIsError('');
-    //   onSearch(inputValue, tumbOn);
-    // }
+    }
   }
 
   return (
