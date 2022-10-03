@@ -31,19 +31,16 @@
 }
 
 .profile__form-fields {
-  margin: 0 auto;
+  max-height: 70px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  max-height: 70px;
   border: none;
   box-sizing: border-box;
-  padding: 17px 0 16px;
+  margin: 0;
+  padding: 0;
 }
 
-/* .profile__form-fields:focus-within {
-    border-bottom: 1px solid #000000;
-  } */
 
 .profile__form-fields:nth-of-type(1) {
   margin: 0;
@@ -59,7 +56,6 @@
   font-size: 11px;
   line-height: 13px;
   color: #000000;
-
 }
 
 .profile__form-input {
@@ -70,14 +66,41 @@
   font-weight: 400;
   font-size: 11px;
   line-height: 13px;
-  padding: 0;
-  margin: 0;
+  margin: 6px 0 0 0;
+  padding: 0 0 10px;
   text-align: end;
   color: #000000;
 }
 
+.profile__form-input:nth-of-type(1) {
+  margin: 0;
+}
+
 .profile__form-input:focus {
   font-weight: 500;
+}
+
+.profile__form-input_error {
+  color: #FF4062;
+}
+
+.profile__error-place {
+height: 16px;
+display: flex;
+  flex-direction: column;
+  border: none;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+.profile__error {
+  font-family: inherit;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 12px;
+  color: #FF4062;
+  margin: 6px 0 0 0;
 }
 
 .profile__links {
@@ -97,8 +120,10 @@
   line-height: 16px;
   text-align: center;
   padding: 0 0 16px;
-  text-decoration: none;
   color: #FF4062;
+  border: none;
+  background-color: #FFFFFF;
+  cursor: pointer;
   transition: opacity 0.3s ease-in-out;
 }
 
@@ -115,14 +140,46 @@
   text-align: center;
   padding: 0 0 16px;
   color: #000000;
+  /* color: #2BE080; */
+  border: none;
+  background-color: #FFFFFF;
+  /* cursor: pointer; */
+  transition: opacity 0.3s ease-in-out;
+}
+
+.profile__change_button:disabled {
+  opacity: 0.5;
+}
+
+.profile__change_button_active {
+  font-family: inherit;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+  text-align: center;
+  padding: 0 0 16px;
+  /* color: #000000; */
+  color: #2BE080;
   border: none;
   background-color: #FFFFFF;
   cursor: pointer;
   transition: opacity 0.3s ease-in-out;
 }
 
-.profile__change_button:hover {
+.profile__change_button_active:hover {
   opacity: 0.5;
+}
+
+.profile__error-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 13px;
+  line-height: 16px;
+  color: #FF4062;
+  margin: 0 0 20px 0;
+  padding: 0;
 }
 
 @media screen and (max-width: 768px) {

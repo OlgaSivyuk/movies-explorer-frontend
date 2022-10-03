@@ -1,4 +1,8 @@
-export const BASE_URL = "https://api.movies-sivyuko.nomoredomains.xyz/";
+export const BASE_URL = 'https://api.movies-sivyuko.nomoredomains.xyz';
+export const SERVER_URL = 'https://api.nomoreparties.co'
+
+// export const BASE_URL = 'http://localhost:3001';
+
 
 function checkResponse(res) {
   return res.ok 
@@ -6,8 +10,10 @@ function checkResponse(res) {
   : Promise.reject(`Ошибка...: ${res.status}`);
 }
 
+// проблемка с корс, nomod использовать нельзяex
 export function register(name, email, password) {
     return fetch(`${BASE_URL}/signup`, {
+      // mode: 'no-cors',
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -67,43 +73,33 @@ export function register(name, email, password) {
     .then(checkResponse)
   };
 
-  export function addMovie({
-    country,
-    director,
-    duration,
-    year,
-    description,
-    image,
-    trailerLink,
-    nameRU,
-    nameEN,
-    thumbnail,
-    movieId,
-  }) {
+    export function addMovie(
+      movie
+    ) {
     return fetch(`${BASE_URL}/movies`, {
-      method: "POST",
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
-      credentials: "include",
-      body: JSON.stringify({
-        country,
-        director,
-        duration,
-        year,
-        description,
-        image,
-        trailerLink,
-        nameRU,
-        nameEN,
-        thumbnail,
-        movieId,
-      }),
+      credentials: 'include',
+      body: JSON.stringify(movie),
     }).then(checkResponse);
   };
 
   export function getSavedMovies() {
     return fetch(`${BASE_URL}/movies`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      credentials: 'include',
+    })
+    .then(checkResponse)
+  };
+
+
+  export function getSavedMovieIds() {
+    return fetch(`${BASE_URL}/movies/getmovieids`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -123,5 +119,3 @@ export function register(name, email, password) {
     })
     .then(checkResponse)
   };
-
-

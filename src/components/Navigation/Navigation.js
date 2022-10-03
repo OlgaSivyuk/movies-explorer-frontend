@@ -1,8 +1,10 @@
 import React from 'react';
 import './Navigation.css';
-import { Link } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom'
 
 function Navigation(props) {
+  const location = useLocation();
+
   function handleCloseMenu() {
     props.setIsNavigate(false);
   }
@@ -17,17 +19,32 @@ function Navigation(props) {
           ></button>
         </div>
         <div className='navigation__links'>
-          <Link className='navigation__link' to='/'>
+          <NavLink
+            to='/'
+            className={`navigation__link ${
+              location.pathname === '/' ? 'navigation__link_active' : ''
+            }`}
+          >
             Главная
-          </Link>
-          <Link
-            className='navigation__link navigation__link_active'
-            to='/movies'>
+          </NavLink>
+          <NavLink
+            to='/movies'
+            className={`navigation__link ${
+              location.pathname === '/movies' ? 'navigation__link_active' : ''
+            }`}
+          >
             Фильмы
-          </Link>
-          <Link className='navigation__link' to='/saved-movies'>
+          </NavLink>
+          <NavLink
+            to='/saved-movies'
+            className={`navigation__link ${
+              location.pathname === '/saved-movies'
+                ? 'navigation__link_active'
+                : ''
+            }`}
+          >
             Сохранённые фильмы
-          </Link>
+          </NavLink>
         </div>
         <div className='navigation__button navigation__button_type_account'>
           <Link to='/profile' className='navigation__account-link'>

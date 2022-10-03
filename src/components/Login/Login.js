@@ -1,41 +1,99 @@
+import React, { useEffect } from 'react';
+import { useForm } from 'react-hook-form';
+import { Link, useNavigate } from 'react-router-dom';
 import './Login.css';
 import logo from '../../images/logo.svg';
-import { Link } from 'react-router-dom';
 
-function Login() {
+
+function Login({ handleLogin, errorMessage }) {
+  const {
+    register,
+    formState: { errors, isValid },
+    handleSubmit,
+    reset,
+  } = useForm({
+    mode: 'all',
+    defaultValues: {
+      email: '',
+      password: '',
+    },
+  });
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (localStorage.getItem('email')) {
+      navigate('/');
+    }
+  })
+
+  function onSubmit(data) {
+    handleLogin(data);
+    reset();
+  }
+
   return (
     <section className='login'>
       <Link to='/' className='login__logo'>
         <img alt='лого в виде бублика' className='login__logo-img' src={logo} />
       </Link>
       <h2 className='login__title login__title-text'>Рады видеть!</h2>
-      <form className='login__form'>
+      <form className='login__form' onSubmit={handleSubmit(onSubmit)}>
         <fieldset className='login__form-fields'>
           <label className='login__form-title'>E-mail</label>
           <input
-            required
-            className='login__form-input'
+            {...register('email', {
+              required: 'Поле «Email» не может быть пустым',
+              pattern: {
+                value: /^[-\w.]+@([A-z0-9][-A-z0-9]+\.)+[A-z]{2,4}$/,
+                message: 'Введен некорректный адрес электронной почты',
+              },
+            })}
+            className={`login__form-input ${
+              errors?.email ? 'login__form-input_error' : ''
+            }`}
             type='email'
-            placeholder='Введите адрес электронной почты'>
-          </input>
-          <span className='login__error'></span>
+            placeholder=' '
+          ></input>
+          {errors?.email && (
+            <span className='login__error' type='text'>
+              {errors?.email?.message}
+            </span>
+          )}
         </fieldset>
         <fieldset className='login__form-fields'>
           <label className='login__form-title'>Пароль</label>
           <input
-            required
+            {...register('password', {
+              required: 'Поле «Пароль» не может быть пустым',
+              minLength: {
+                value: 8,
+                message: 'Пароль должен содержать минимум 8 символов',
+              },
+            })}
+            className={`login__form-input ${
+              errors?.password ? 'login__form-input_error' : ''
+            }`}
             type='password'
-            className='login__form-input login__form-input_error'
-            placeholder='Введите пароль'>
-          </input>
-          <span className='login__error' type='text'>
-            Что-то пошло не так...
-          </span>
+            placeholder=' '
+          ></input>
+          {errors?.password && (
+            <span className='login__error' type='text'>
+              {errors?.password?.message}
+            </span>
+          )}
         </fieldset>
+        <span className='login__error-message'>{errorMessage}</span>
+        <button
+          className={`login__submit_button ${
+            !isValid ? 'login__submit_button_disabled' : ''
+          }`}
+          disabled={!isValid}
+          type='submit'
+        >
+          Войти
+        </button>
       </form>
-      <button className='login__submit_button' type='submit'>
-        Войти
-      </button>
+
       <div className='login__text'>
         <p className='login__signin'>
           Еще не зарегистрированы?{' '}

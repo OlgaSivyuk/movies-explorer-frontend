@@ -6,7 +6,7 @@ function checkResponse(res) {
     : Promise.reject(`Ошибка...: ${res.status}`);
 }
 
-export function getMovies() {
+export function getMovies() { //searchString, isShort
     return fetch(BASE_URL, {
         method: 'GET',
         headers: {

@@ -1,40 +1,71 @@
 import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom';
 import './MoviesCard.css';
-import movieImg from '../../../images/movie-img.svg';
 
-function MoviesCard() {
-  const [liked, setLiked] = useState(false);
-  const { pathname } = useLocation();
+function MoviesCard({
+  movie,
+  movieActionAdd,
+  movieActionDelete,
+  movieActionDeletedMovieByLike,
+  showIconActive,
+}) {
+  const [saved, setSaved] = useState(false);
 
-  function handleLike() {
-    setLiked(!liked);
+  // лайк поставлен
+  function shouldShowLike() {
+    return movieActionAdd !== undefined;
+  }
+
+  function handleLikeClick() { // debugger;
+    if (!showIconActive) {
+      movieActionAdd(movie).then(() => setSaved(!saved)); //true
+    } else {
+      movieActionDeletedMovieByLike(movie.id).then(() => setSaved(!saved)); //false
+    }
+  }
+
+  // лайк удален (и карточка удалена из сохраненных)
+  function shouldShowDelete() {
+    return movieActionDelete !== undefined;
+  }
+
+  function handleDelete() {
+    movieActionDelete(movie.id);
   }
 
   return (
     <>
       <li className='movie-card'>
-        <img className='movie__image' alt='Кадр из фильма' src={movieImg} />
+        <a
+          className='movie__trailer-link'
+          target='_blank'
+          rel='noreferrer'
+          href={movie.trailerLink}
+        >
+          <img className='movie__image' alt={movie.nameRU} src={movie.image} />
+        </a>
         <div className='movie__container'>
           <div className='movie__info'>
-            <h3 className='movie__title'>33 слова о дизайне</h3>
-            <span className='movie__duration'>1ч 47м</span>
+            <h3 className='movie__title'>{movie.nameRU}</h3>
+            <span className='movie__duration'>{movie.duration} мин</span>
           </div>
-          {pathname === '/saved-movies' ? (
-            <button
-              className='movie__button movie__button_type_delete'
-              aria-label='Удалить'
-              type='button'>
-              </button>
-          ) : (
+          {shouldShowLike() && (
             <button
               className={`movie__button movie__button_type_like ${
-                liked ? 'movie__button_type_like_active' : ''
+                showIconActive ? 'movie__button_type_like_active' : ''
               }`}
               aria-label='Нравится'
               type='button'
-              onMouseDown={handleLike}>
-              </button>
+              onClick={handleLikeClick}
+            ></button>
+          )}
+
+          {shouldShowDelete() && (
+            <button
+              className='movie__button movie__button_type_delete'
+              aria-label='Удалить'
+              type='button'
+              onClick={handleDelete}
+            ></button>
           )}
         </div>
       </li>

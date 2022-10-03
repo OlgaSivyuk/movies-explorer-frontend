@@ -87,6 +87,15 @@
 
 }
 
+.movie__trailer-link {
+ cursor: pointer;
+ transition: opacity 0.3s ease-in-out;
+}
+
+.movie__trailer-link:hover {
+  opacity: 0.5;
+}
+
 @media screen and (max-width: 892px) {
   .movie-card {
     max-width: 339px;

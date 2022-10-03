@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import './Main.css';
-import { useLocation } from 'react-router-dom';
 import Promo from './Promo/Promo';
 import AboutProject from './AboutProject/AboutProject';
 import Techs from './Techs/Techs';
@@ -10,22 +9,11 @@ import Header from '../Header/Header';
 import HeaderAuth from '../HeaderAuth/HeaderAuth';
 import Footer from '../Footer/Footer';
 
-function Main() {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
-  const location = useLocation();
-  // const aboutProjectRef = useRef();
-
-  useEffect(() => {
-    if (location.pathname === '/') {
-      setIsLoggedIn(false);
-    }
-  }, [location]);
-
+function Main({loggedIn}) {
   return (
     <>
-      {isLoggedIn ? <HeaderAuth /> : <Header />}
+      {loggedIn ? <HeaderAuth /> : <Header />}
       <main className='content'>
-        {/* <Promo aboutProjectRef={aboutProjectRef}/> */}
         <Promo />
         <AboutProject />
         <Techs />
