@@ -1,8 +1,8 @@
-# Moveis Explorer  
-diploma project
+# MOVIES EXPLORER  
+Diploma project of Yandex Practicum course.
+This is a movie search application. On main page user can find information about studdent who create it. Also user can create and change his own profile and find, save the desired movies in their profile or delete them from.
 
-### Tech Stack
-
+Tech Stack:  
 * React
 * JavaScript
 * JSX
@@ -12,9 +12,11 @@ diploma project
 Public IP: 51.250.25.208
 pull request [link](https://github.com/OlgaSivyuk/movies-explorer-frontend/pull/3) 
 
-# movies-explorer-api  
+____
+movies-explorer-api  
 [Show API](https://api.movies-sivyuko.nomoredomains.xyz)
 
-# movies-explorer-frontend  
+____
+movies-explorer-frontend  
 [Show the project](https://movies-sivyuko.nomoredomains.xyz)
 
